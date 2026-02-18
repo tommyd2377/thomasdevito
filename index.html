@@ -1077,22 +1077,6 @@
     </div>
   </header>
 
-  <section class="ai-banner" aria-label="Victoria voice AI">
-    <div class="container">
-      <div class="ai-banner__inner">
-        <p class="ai-banner__title">
-          Talk to Victoria, my AI voice assistant. She can answer any questions that you may have about my history, skills and projects. She's also really fun to talk to!
-        </p>
-        <a class="ai-banner__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
-          (929) 734-9187
-        </a>
-        <p class="ai-banner__stack">
-          I built Victoria with the OpenAI Realtime API and Twilio Media Streams using a WebSocket bridge. It's deployed as an Express webserver on a Node.js runtime.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <main id="main">
     <!-- =========================
          Hero
@@ -1125,6 +1109,22 @@
       </div>
     </section>
 
+    <section class="ai-banner" aria-label="Victoria voice AI">
+      <div class="container">
+        <div class="ai-banner__inner">
+          <p class="ai-banner__title">
+            Talk to Victoria, my AI voice assistant. She can answer any questions that you may have about my history, skills and projects. She's also really fun to talk to!
+          </p>
+          <a class="ai-banner__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
+            (929) 734-9187
+          </a>
+          <p class="ai-banner__stack">
+            I built Victoria with the OpenAI Realtime API and Twilio Media Streams using a WebSocket bridge. It's deployed as an Express webserver on a Node.js runtime.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <hr class="divider" />
 
     <!-- =========================
@@ -1135,84 +1135,114 @@
         <header class="section__head">
           <p class="section__label">Software</p>
           <h2 id="software-title">Selected Projects</h2>
-          <p class="lead">A few projects spanning web apps, mechanism design experiments, and Solana smart contracts.</p>
+          <p class="lead">Selected projects from GitHub spanning AI voice systems, consumer apps, recommendation systems, and Solana protocols.</p>
         </header>
 
         <div class="grid projects" role="list" aria-label="Software projects">
           <article class="card" role="listitem">
-            <h3 class="card__title">HeadlineHarmonies (On-demand NFTs)</h3>
-            <p class="card__desc">On-demand minting workflow for NFT drops, designed around fast issuance, clean metadata, and a smooth creator-to-collector experience.</p>
+            <h3 class="card__title">Voice AI System (Victoria)</h3>
+            <p class="card__desc">A Node.js backend that connects live Twilio calls to the OpenAI Realtime API so Victoria can answer questions and forward structured notes by SMS.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Node.js</li>
+              <li class="tag">Express</li>
+              <li class="tag">Twilio</li>
+              <li class="tag">OpenAI Realtime</li>
+              <li class="tag">WebSocket</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small" href="https://github.com/tommyd2377/voice-ai-system" target="_blank" rel="noreferrer" aria-label="GitHub repository for Voice AI System (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="tel:+19297349187" aria-label="Call Victoria at 929 734 9187">Call Victoria</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">HeadlineHarmonies</h3>
+            <p class="card__desc">A headline-to-image product that turns live news into styled AI art with social sharing workflows and the project's original NFT roots.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">TypeScript</li>
+                     <li class="tag">HuggingFace</li>
+              <li class="tag">OpenAI</li>
+              <li class="tag">React</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small" href="https://github.com/gopulse-labs/hhmint" target="_blank" rel="noreferrer" aria-label="GitHub repository for HeadlineHarmonies (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://www.headlineharmonies.xyz/" target="_blank" rel="noreferrer" aria-label="Live demo for HeadlineHarmonies (opens in a new tab)">View App</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">FilmPulse</h3>
+            <p class="card__desc">An AI-powered film discovery companion with conversational recommendations, streaming responses, and enriched metadata for each pick.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">OpenAI</li>
+              <li class="tag">SSE</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small" href="https://github.com/tommyd2377/FilmPulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for FilmPulse (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://filmpulseai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for FilmPulse (opens in a new tab)">View App</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">GoPulse Core Protocol</h3>
+            <p class="card__desc">Core GoPulse protocol for content validation and rewards, using a PvP AMM design on Solana for incentive-aligned participation.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Solana</li>
+              <li class="tag">Anchor</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">Vue</li>
+              <li class="tag">Rust</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small" href="https://github.com/gopulse-labs/gopulse-core" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse Core Protocol (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://www.gpdapp.xyz" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse Core Protocol (opens in a new tab)">View dApp</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">GoPulse</h3>
+            <p class="card__desc">A social news platform for web and mobile with read-before-share, invite-style subscriptions, and community quality controls.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">TypeScript</li>
+              <li class="tag">Firebase</li>
+              <li class="tag">Ionic</li>
+              <li class="tag">Stripe</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small" href="https://github.com/tommyd2377/gopulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://gopulse-71176.web.app" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse (opens in a new tab)">View App</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">Blndr (Composite Vault)</h3>
+            <p class="card__desc">A Solana dApp for minting and redeeming basket-backed SPL composite tokens with an Anchor program and a Next.js front end.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Solana</li>
               <li class="tag">Anchor</li>
               <li class="tag">Rust</li>
-              <li class="tag">NFTs</li>
-              <li class="tag">Web3</li>
+              <li class="tag">Next.js</li>
             </ul>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/gopulse-labs/hhmint" target="_blank" rel="noreferrer" aria-label="GitHub repository for HeadlineHarmonies (opens in a new tab)">GitHub</a>
-              <span class="btn btn--small btn--disabled" aria-disabled="true" title="Live demo link TBD">Live Demo</span>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/composite_vault" target="_blank" rel="noreferrer" aria-label="GitHub repository for Blndr (Composite Vault) (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">View dApp</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">GoPulse (information market using a PvP AMM to identify synthetic media)</h3>
-            <p class="card__desc">An information-market concept using a PvP-style AMM to pressure-test claims and surface signal under adversarial conditions.</p>
+            <h3 class="card__title">Hyper_Rank</h3>
+            <p class="card__desc">A Python collaborative filtering algorithm for ranking and recommending items based on user-user similarity and tiered popularity weighting.</p>
             <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Mechanism Design</li>
-              <li class="tag">AMM</li>
-              <li class="tag">Synthetic Media</li>
-              <li class="tag">Research</li>
-              <li class="tag">Web3</li>
+              <li class="tag">Python</li>
+              <li class="tag">Collaborative Filtering</li>
+              <li class="tag">Recommendation Engine</li>
+              <li class="tag">Algorithms</li>
             </ul>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/gopulse-labs" target="_blank" rel="noreferrer" aria-label="GitHub organization for GoPulse Labs (opens in a new tab)">GitHub</a>
-              <span class="btn btn--small btn--disabled" aria-disabled="true" title="Live demo link TBD">Live Demo</span>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">PvP AMM (Smart Contract)</h3>
-            <p class="card__desc">Smart contract implementation of a PvP AMM, exploring incentive-aligned pricing for contested outcomes and rapid market iteration.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Rust</li>
-              <li class="tag">Smart Contract</li>
-              <li class="tag">AMM</li>
-              <li class="tag">Solana</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/tommyd2377/pvp-amm" target="_blank" rel="noreferrer" aria-label="GitHub repository for PvP AMM (opens in a new tab)">GitHub</a>
-              <span class="btn btn--small btn--disabled" aria-disabled="true" title="Live demo link TBD">Live Demo</span>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">M-of-N Multisig Wallet (Smart Contract)</h3>
-            <p class="card__desc">Configurable multisig wallet contract supporting M-of-N approvals, built for safer treasury ops and explicit, auditable execution paths.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Rust</li>
-              <li class="tag">Smart Contract</li>
-              <li class="tag">Security</li>
-              <li class="tag">Multisig</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/tommyd2377/multisig" target="_blank" rel="noreferrer" aria-label="GitHub repository for M-of-N Multisig Wallet (opens in a new tab)">GitHub</a>
-              <span class="btn btn--small btn--disabled" aria-disabled="true" title="Live demo link TBD">Live Demo</span>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">GoPulse (Web2 social news platform)</h3>
-            <p class="card__desc">A social news platform focused on signal over noise, with a lightweight UI and Firebase-hosted deployment for fast iteration.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">TypeScript</li>
-              <li class="tag">Web App</li>
-              <li class="tag">Firebase</li>
-              <li class="tag">Realtime</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/tommyd2377/gopulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse (opens in a new tab)">GitHub</a>
-              <a class="btn btn--small btn--ghost" href="https://gopulse-71176.firebaseapp.com" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse (opens in a new tab)">Live Demo</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/Hyper_Rank" target="_blank" rel="noreferrer" aria-label="GitHub repository for Hyper_Rank (opens in a new tab)">GitHub</a>
             </div>
           </article>
         </div>
@@ -1304,7 +1334,7 @@
         <div class="about">
           <figure class="headshot">
             <img
-              src="../portfolio/headshot.jpg"
+              src="./headshot.jpg"
               alt="Headshot placeholder for Thomas DeVito"
               width="560"
               height="640"
@@ -1395,9 +1425,6 @@
               <p class="contact-voice__desc">
                 Victoria can answer questions about my history and send me an SMS.
               </p>
-              <ul class="contact-voice__stack" aria-label="Victoria stack summary">
-                <li>OpenAI Realtime API (<code>gpt-realtime</code>), Twilio (Programmable Voice / Media Streams + SMS forwarding), <code>ws</code>, Express, and Node.js (ES modules).</li>
-              </ul>
             </section>
             <a href="mailto:tdevito@icloud.com" aria-label="Email Thomas DeVito">
               Email <span>tdevito@icloud.com</span>
