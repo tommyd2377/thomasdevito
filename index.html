@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Thomas DeVito — freelance full-stack software engineer in Brooklyn, NYC. Software portfolio + screenwriting work." />
+  <meta name="description" content="Thomas DeVito — freelance full-stack software engineer in Brooklyn, NYC. Software portfolio and screenwriting work." />
   <title>Thomas DeVito</title>
   <link rel="icon" type="image/png" href="./headshot.png" />
   <link rel="shortcut icon" href="./headshot.png" />
@@ -811,14 +811,16 @@
     }
 
     .headshot {
-      border-radius: calc(var(--radius) + 6px);
-      border: 1px solid var(--border);
+      margin: 0;
       box-shadow: none;
-      background: var(--surface);
-      overflow: hidden;
+      background: transparent;
     }
 
-    .headshot img { width: 100%; height: auto; }
+    .headshot img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
 
     .about__body {
       display: grid;
@@ -1085,11 +1087,11 @@
       <div class="container">
         <div class="hero__grid">
           <div>
-            <p class="kicker">Thomas DeVito · Brooklyn, NYC · Freelance Full-Stack</p>
-            <h1 id="hero-title">Full-stack engineering powered by human creativity and AI leverage.</h1>
+            <p class="kicker">Thomas DeVito · Brooklyn, NYC · Freelance Full-Stack Engineer</p>
+            <h1 id="hero-title">Full-stack engineering with human judgment and AI-assisted velocity.</h1>
             <p class="lead">
               I bring 10 years of coding experience to end-to-end builds across frontend, backend, payments, and smart contracts.
-              I pair the kind of creativity only a human can possess with the latest AI tools to orchestrate an army of AI agents that help me move faster and ship better software.
+              I combine human product judgment with AI-assisted research, implementation, and iteration to move faster without losing craftsmanship.
             </p>
 
             <div class="hero__actions">
@@ -1113,13 +1115,13 @@
       <div class="container">
         <div class="ai-banner__inner">
           <p class="ai-banner__title">
-            Talk to Victoria, my AI voice assistant. She can answer any questions that you may have about my history, skills and projects. She's also really fun to talk to!
+            Talk to Victoria, my AI voice assistant. She can answer questions about my history, skills, and projects. She's also really fun to talk to!
           </p>
           <a class="ai-banner__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
             (929) 734-9187
           </a>
           <p class="ai-banner__stack">
-            I built Victoria with the OpenAI Realtime API and Twilio Media Streams using a WebSocket bridge. It's deployed as an Express webserver on a Node.js runtime.
+            I built Victoria with the OpenAI Realtime API and Twilio Media Streams using a WebSocket bridge. It's deployed as an Express web server on a Node.js runtime.
           </p>
         </div>
       </div>
@@ -1135,13 +1137,13 @@
         <header class="section__head">
           <p class="section__label">Software</p>
           <h2 id="software-title">Selected Projects</h2>
-          <p class="lead">Selected projects spanning AI voice systems, consumer apps, recommendation systems, and Solana protocols.</p>
+          <p class="lead">Projects spanning AI voice systems, consumer apps, recommendation systems, and Solana protocols.</p>
         </header>
 
         <div class="grid projects" role="list" aria-label="Software projects">
           <article class="card" role="listitem">
             <h3 class="card__title">FlowTime</h3>
-            <p class="card__desc">An accountability app for screen-use vows, group challenges, proof uploads, and Stripe-backed pledge flows.</p>
+            <p class="card__desc">An accountability app for screen-time commitments, group challenges, proof uploads, and Stripe-backed pledge flows.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">React Native</li>
               <li class="tag">TypeScript</li>
@@ -1173,11 +1175,11 @@
 
           <article class="card" role="listitem">
             <h3 class="card__title">HeadlineHarmonies</h3>
-            <p class="card__desc">A headline-to-image product that turns live news into styled AI art with social sharing workflows and the project's original NFT roots.</p>
+            <p class="card__desc">A headline-to-image app that turns live news into styled AI images with social sharing workflows.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
               <li class="tag">TypeScript</li>
-                     <li class="tag">HuggingFace</li>
+              <li class="tag">Hugging Face</li>
               <li class="tag">OpenAI</li>
               <li class="tag">React</li>
             </ul>
@@ -1204,7 +1206,7 @@
 
           <article class="card" role="listitem">
             <h3 class="card__title">GoPulse Core Protocol</h3>
-            <p class="card__desc">Core GoPulse protocol for content validation and rewards, using a PvP AMM design on Solana for incentive-aligned participation.</p>
+            <p class="card__desc">A Solana protocol for content validation and rewards, built around a PvP AMM model for incentive-aligned participation.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Solana</li>
               <li class="tag">Anchor</li>
@@ -1250,7 +1252,7 @@
 
           <article class="card" role="listitem">
             <h3 class="card__title">Hyper_Rank</h3>
-            <p class="card__desc">A Python collaborative filtering algorithm for ranking and recommending items based on user-user similarity and tiered popularity weighting.</p>
+            <p class="card__desc">A Python collaborative filtering algorithm for ranking and recommending items based on user-to-user similarity and tiered popularity weighting.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Python</li>
               <li class="tag">Collaborative Filtering</li>
@@ -1275,7 +1277,7 @@
         <header class="section__head">
           <p class="section__label">Screenwriting</p>
           <h2 id="screenwriting-title">Script Portfolio</h2>
-          <p class="lead">As if the coding were not enough, Tom also wrote a feature screenplay and is currently developing a second.</p>
+          <p class="lead">Alongside my software work, I've written one feature screenplay and am developing a second.</p>
         </header>
 
         <div class="grid script-grid" aria-label="Screenwriting portfolio">
@@ -1286,16 +1288,16 @@
               <p class="value">Lovelacers</p>
 
               <p class="label">Logline</p>
-              <p class="value">When a successful engineering executive's legacy is threatened by a young, effortlessly gifted coding prodigy, she orchestrates a high-stakes act of sabotage that spirals into a beautifully haunting exploration of cosmic fairness and the lengths one will go to give their life meaning.</p>
+              <p class="value">When a successful engineering executive's legacy is threatened by a young, effortlessly gifted coding prodigy, she orchestrates a high-stakes act of sabotage that spirals into a beautifully haunting exploration of cosmic fairness and the lengths people will go to give their lives meaning.</p>
             </div>
 
             <p class="label label--spaced">Synopsis</p>
             <p class="synopsis" id="synopsis-lovelacers" data-expanded="false">
-              Amanda Featherstone is a brilliant, meticulously controlled Senior Vice President of Engineering who has built her lavish Manhattan lifestyle on precision and relentless hard work. But her perfectly ordered world is thrown into chaos with the arrival of Tamsin DeBari, a 26-year-old self-taught coding prodigy. Tamsin is everything Amanda is not: chaotic, effortlessly gifted, and seemingly blessed with an unbreakable streak of cosmic luck. As Tamsin casually upends Amanda's complex architectural tech projects with infuriatingly simple solutions, a dark and bitter rivalry is ignited within their high-stakes firm.
+              Amanda Featherstone is a brilliant, meticulously controlled Senior Vice President of Engineering who has built her life with precision and relentless hard work. But her perfectly ordered world is thrown into chaos with the arrival of Tamsin DeBari, a 26-year-old self-taught coding prodigy. Tamsin is everything Amanda is not: chaotic, effortlessly gifted, and seemingly blessed with an unbreakable streak of cosmic luck. As Tamsin casually upends Amanda's complex architectural tech projects with infuriatingly simple solutions, a dark and bitter rivalry is ignited within their high-stakes firm.
               <br /><br />
-              What begins as a professional turf war quickly spirals into a dangerous psychological fixation. While Tamsin recklessly navigates her successes, surviving a totaled sports car without a scratch and effortlessly charming the company's elite executives, Amanda is consumed by a mounting, obsessive sense of profound unfairness. Driven by a desperate need to balance the cosmic scales, Amanda's jealousy begins to strip away her polished corporate veneer. The tension mounts as Amanda begins to blur the lines between professional ambition and covert personal sabotage.
+              What begins as a professional turf war quickly spirals into a dangerous psychological fixation. While Tamsin recklessly navigates her successes, surviving a major car crash with barely a scratch and effortlessly charming the company's elite executives, Amanda is consumed by a mounting, obsessive sense of profound unfairness. Driven by a desperate need to balance the cosmic scales, Amanda's jealousy begins to strip away her polished corporate veneer. The tension mounts as Amanda begins to blur the lines between professional ambition and covert personal sabotage.
               <br /><br />
-              Framed by the chilling reality of Amanda's present-day life as an inmate in an upstate New York prison, "Lovelacers" acts as a ticking-clock psychological thriller. Readers know from the very first page that Amanda's obsession will ultimately cost her everything, but the suspense lies in the devastating journey there. Set against the backdrop of an atmospheric corporate retreat in the Catskill Mountains, the narrative hurtles toward a fateful late-night confrontation at the edge of a roaring waterfall. It is a gripping exploration of ambition, privilege, and the terrifying lengths someone will go to when they believe the universe has cheated them.
+              Framed by the chilling reality of Amanda's present-day life as an inmate in an upstate New York prison, "Lovelacers" unfolds as a ticking-clock psychological thriller. Readers know from the very first page that Amanda's obsession will ultimately cost her everything, but the suspense lies in the devastating journey there. Set against the backdrop of an atmospheric corporate retreat in the Catskill Mountains, the narrative hurtles toward a fateful late-night confrontation at the edge of a roaring waterfall. It is a gripping exploration of ambition, privilege, and the terrifying lengths someone will go to when they believe the universe has cheated them.
             </p>
             <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-lovelacers">Read more</button>
 
@@ -1310,7 +1312,7 @@
             <h3 class="card__title">In Progress</h3>
             <div class="script-meta">
               <p class="label">Title</p>
-              <p class="value">FlowBand</p>
+              <p class="value">Under the Arcadian Sky</p>
 
               <p class="label">Logline</p>
               <p class="value">Haunted by a tragic past and a prophetic dream, a disillusioned tech worker accidentally collapses the global economy with a device that cures smartphone addiction, forcing her to pivot from corporate pariah to utopian architect in a battle for the future of human connection.</p>
@@ -1320,14 +1322,14 @@
             <p class="synopsis" id="synopsis-flowband" data-expanded="false">
               Sarah Fiore is an undervalued programmer drifting through a life of unfulfilled potential, secretly carrying the guilt of her best friend Julia's overdose decades ago. Her stagnant reality is shattered when a concussion triggers a vivid, otherworldly dream, fulfilling a prophecy Julia made the night before she died. Waking with a newfound clarity and a technical blueprint, Sarah recruits her estranged friends, Terri and Nicole, to build the "FlowBand," a wearable device designed to sever the modern compulsion for digital connectivity. Fueled by intuition rather than business strategy, Sarah's mesmerizing, intense salesmanship turns the device into a global phenomenon, liberating millions from their screens.
               <br /><br />
-              However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, causing the stock market to crash and bifurcating society into two hostile camps: those who have "woken up" and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal and social attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
+              However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, crashing the stock market and splitting society into two hostile camps: those who have "woken up" and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal, public, and reputational attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
               <br /><br />
               The journey leads Sarah to the Canadian wilderness, where a brush with the harsh realities of off-grid survival convinces her that humanity cannot simply regress to nature; it must power its way forward. After discovering a brilliant but discredited engineer with a prototype for a safe, small-scale fission reactor, Sarah gambles her fortune on a radical pivot. She moves to establish a self-sustaining eco-society powered by this new energy, setting the stage for an ultimate confrontation between her budding egalitarian utopia and a desperate, capitalist "Old World" that wants her technology but fears her ideology.
             </p>
             <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-flowband">Read more</button>
 
             <div class="card__links" aria-label="In progress links">
-              <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read FlowBand preview PDF (opens in a new tab)">Read Preview</a>
+              <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read Under the Arcadian Sky preview PDF (opens in a new tab)">Read Preview</a>
             </div>
           </article>
         </div>
@@ -1351,9 +1353,9 @@
           <figure class="headshot">
             <img
               src="./headshot.png"
-              alt="Headshot placeholder for Thomas DeVito"
-              width="560"
-              height="640"
+              alt="Headshot of Thomas DeVito"
+              width="720"
+              height="720"
               loading="lazy"
               decoding="async"
             />
@@ -1362,8 +1364,8 @@
           <div class="about__body">
             <p>
               Experienced and creative full-stack software developer, proficient in building complex web applications, algorithms, and smart contracts.
-              With 10 years of coding experience, I adapt quickly to new languages and frameworks and use the latest AI tools to orchestrate an army of AI agents for research, implementation, and iteration.
-              The direction, judgment, and creativity stay human while the agents extend my speed and output.
+              With 10 years of coding experience, I adapt quickly to new languages and frameworks and use AI tools for research, implementation, and iteration.
+              The direction, judgment, and creativity stay human while the tooling extends my speed and output.
             </p>
 
             <div>
