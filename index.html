@@ -718,31 +718,104 @@
        Screenwriting
        ========================= */
     .script-grid {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      align-items: start;
+      grid-template-columns: 1fr;
+      gap: 1.15rem;
     }
 
     .script-card {
+      --script-accent: var(--accent-rgb);
       position: relative;
-      padding-left: 1.35rem;
+      grid-template-columns: minmax(220px, 310px) minmax(0, 1fr);
+      gap: clamp(1rem, 3vw, 2rem);
+      align-items: start;
+      padding: clamp(1rem, 2.2vw, 1.35rem);
+      overflow: hidden;
+      border-color: rgb(var(--script-accent) / 0.32);
+      background:
+        linear-gradient(135deg, rgb(var(--script-accent) / 0.12), rgb(var(--surface-rgb) / 0.96) 34%, var(--surface));
     }
 
     .script-card::before {
       content: "";
       position: absolute;
-      top: 1.15rem;
-      bottom: 1.15rem;
-      left: 1.05rem;
-      width: 3px;
+      top: 1.1rem;
+      bottom: 1.1rem;
+      left: 0;
+      width: 4px;
       border-radius: 999px;
-      background: var(--primary);
-      opacity: 0.9;
+      background: rgb(var(--script-accent));
+      opacity: 0.95;
     }
 
-    .script-meta {
+    .script-card:hover,
+    .script-card:focus-within {
+      border-color: rgb(var(--script-accent) / 0.62);
+      background:
+        linear-gradient(135deg, rgb(var(--script-accent) / 0.16), rgb(var(--surface-rgb) / 0.98) 34%, var(--surface2));
+    }
+
+    .script-card--lovelacers { --script-accent: 160 76 174; }
+    .script-card--arcadian { --script-accent: 116 140 255; }
+
+    .script-card__body {
+      display: grid;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+
+    .script-heading {
+      display: grid;
+      gap: 0.55rem;
+      max-width: 68ch;
+    }
+
+    .script-title {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .script-logline {
       display: grid;
       gap: 0.4rem;
-      margin-top: 0.4rem;
+      min-width: 0;
+      max-width: 66ch;
+    }
+
+    .script-logline .value {
+      color: var(--text);
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+      line-height: 1.6;
+    }
+
+    .script-poster {
+      margin: 0;
+      position: relative;
+      width: 100%;
+      max-width: 310px;
+      justify-self: center;
+      overflow: hidden;
+      border: 1px solid rgb(var(--script-accent) / 0.48);
+      border-radius: calc(var(--radius-sm) - 4px);
+      background: var(--surface2);
+      box-shadow: 0 24px 54px rgb(var(--script-accent) / 0.18);
+    }
+
+    .script-poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
+      pointer-events: none;
+    }
+
+    .script-poster img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
     }
 
     .label {
@@ -755,15 +828,21 @@
     }
 
     .label--spaced {
-      margin-top: 0.9rem;
+      margin-top: 0;
     }
 
     .value { color: var(--text); margin: 0; }
 
+    .script-synopsis {
+      display: grid;
+      gap: 0.55rem;
+      max-width: 72ch;
+    }
+
     .synopsis {
-      margin-top: 0.8rem;
+      margin-top: 0;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.6;
       margin-bottom: 0;
     }
 
@@ -785,12 +864,46 @@
     }
 
     .synopsis-toggle {
-      margin-top: 0.65rem;
       width: fit-content;
     }
 
     .script-card .card__links {
-      margin-top: 0.9rem;
+      margin-top: 0.15rem;
+    }
+
+    @media (max-width: 760px) {
+      .script-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .script-card::before {
+        top: 0.95rem;
+        right: 0.95rem;
+        bottom: auto;
+        left: 0.95rem;
+        width: auto;
+        height: 3px;
+      }
+
+      .script-poster {
+        width: min(82%, 320px);
+        margin-top: 0.4rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .script-card {
+        padding: 0.95rem;
+      }
+
+      .script-poster {
+        width: min(86%, 300px);
+      }
+
+      .script-title {
+        font-size: 1.65rem;
+      }
     }
 
     .bullets {
@@ -1277,59 +1390,75 @@
         <header class="section__head">
           <p class="section__label">Screenwriting</p>
           <h2 id="screenwriting-title">Script Portfolio</h2>
-          <p class="lead">Alongside my software work, I've written one feature screenplay and am developing a second.</p>
+          <p class="lead">Alongside my software work, I've written two screenplays.</p>
         </header>
 
         <div class="grid script-grid" aria-label="Screenwriting portfolio">
-          <article class="card script-card">
-            <h3 class="card__title">Completed Screenplay</h3>
-            <div class="script-meta">
-              <p class="label">Title</p>
-              <p class="value">Lovelacers</p>
+          <article class="card script-card script-card--lovelacers">
+            <figure class="script-poster">
+              <img src="./Lovelacers_poster.png" alt="Poster for Lovelacers showing a secluded forest waterfall." width="1030" height="1527" loading="lazy" decoding="async" />
+            </figure>
 
-              <p class="label">Logline</p>
-              <p class="value">When a successful engineering executive's legacy is threatened by a young, effortlessly gifted coding prodigy, she orchestrates a high-stakes act of sabotage that spirals into a beautifully haunting exploration of cosmic fairness and the lengths people will go to give their lives meaning.</p>
-            </div>
+            <div class="script-card__body">
+              <header class="script-heading">
+                <h3 class="script-title">Lovelacers</h3>
+              </header>
 
-            <p class="label label--spaced">Synopsis</p>
-            <p class="synopsis" id="synopsis-lovelacers" data-expanded="false">
-              Amanda Featherstone is a brilliant, meticulously controlled Senior Vice President of Engineering who has built her life with precision and relentless hard work. But her perfectly ordered world is thrown into chaos with the arrival of Tamsin DeBari, a 26-year-old self-taught coding prodigy. Tamsin is everything Amanda is not: chaotic, effortlessly gifted, and seemingly blessed with an unbreakable streak of cosmic luck. As Tamsin casually upends Amanda's complex architectural tech projects with infuriatingly simple solutions, a dark and bitter rivalry is ignited within their high-stakes firm.
-              <br /><br />
-              What begins as a professional turf war quickly spirals into a dangerous psychological fixation. While Tamsin recklessly navigates her successes, surviving a major car crash with barely a scratch and effortlessly charming the company's elite executives, Amanda is consumed by a mounting, obsessive sense of profound unfairness. Driven by a desperate need to balance the cosmic scales, Amanda's jealousy begins to strip away her polished corporate veneer. The tension mounts as Amanda begins to blur the lines between professional ambition and covert personal sabotage.
-              <br /><br />
-              Framed by the chilling reality of Amanda's present-day life as an inmate in an upstate New York prison, "Lovelacers" unfolds as a ticking-clock psychological thriller. Readers know from the very first page that Amanda's obsession will ultimately cost her everything, but the suspense lies in the devastating journey there. Set against the backdrop of an atmospheric corporate retreat in the Catskill Mountains, the narrative hurtles toward a fateful late-night confrontation at the edge of a roaring waterfall. It is a gripping exploration of ambition, privilege, and the terrifying lengths someone will go to when they believe the universe has cheated them.
-            </p>
-            <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-lovelacers">Read more</button>
+              <div class="script-logline">
+                <p class="label">Logline</p>
+                <p class="value">When a successful engineering executive's legacy is threatened by a young, effortlessly gifted coding prodigy, she orchestrates a high-stakes act of sabotage that spirals into a beautifully haunting exploration of cosmic fairness and the lengths people will go to give their lives meaning.</p>
+              </div>
 
-            <div class="card__links" aria-label="Screenplay links">
-              <a class="btn btn--small" href="./Lovelacers-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read screenplay preview PDF (opens in a new tab)">Read Preview</a>
-              <a class="btn btn--small btn--ghost" href="https://blcklst.com/profile/tdevito" target="_blank" rel="noreferrer" aria-label="View hosted screenplay profile on The Black List (opens in a new tab)">Profile</a>
-              <a class="btn btn--small btn--ghost" href="mailto:tdevito@icloud.com?subject=Request%20Full%20Script&body=Hi%20Thomas%2C%0A%0AI%27d%20like%20to%20request%20the%20full%20script.%0A%0AName%3A%0AProject%20or%20Company%3A%0AHow%20you%20found%20the%20script%3A%0A" aria-label="Request the full script by email">Request Full Script</a>
+              <div class="script-synopsis">
+                <p class="label label--spaced">Synopsis</p>
+                <p class="synopsis" id="synopsis-lovelacers" data-expanded="false">
+                  Amanda Featherstone is a brilliant, meticulously controlled Senior Vice President of Engineering who has built her life with precision and relentless hard work. But her perfectly ordered world is thrown into chaos with the arrival of Tamsin DeBari, a 26-year-old self-taught coding prodigy. Tamsin is everything Amanda is not: chaotic, effortlessly gifted, and seemingly blessed with an unbreakable streak of cosmic luck. As Tamsin casually upends Amanda's complex architectural tech projects with infuriatingly simple solutions, a dark and bitter rivalry is ignited within their high-stakes firm.
+                  <br /><br />
+                  What begins as a professional turf war quickly spirals into a dangerous psychological fixation. While Tamsin recklessly navigates her successes, surviving a major car crash with barely a scratch and effortlessly charming the company's elite executives, Amanda is consumed by a mounting, obsessive sense of profound unfairness. Driven by a desperate need to balance the cosmic scales, Amanda's jealousy begins to strip away her polished corporate veneer. The tension mounts as Amanda begins to blur the lines between professional ambition and covert personal sabotage.
+                  <br /><br />
+                  Framed by the chilling reality of Amanda's present-day life as an inmate in an upstate New York prison, "Lovelacers" unfolds as a ticking-clock psychological thriller. Readers know from the very first page that Amanda's obsession will ultimately cost her everything, but the suspense lies in the devastating journey there. Set against the backdrop of an atmospheric corporate retreat in the Catskill Mountains, the narrative hurtles toward a fateful late-night confrontation at the edge of a roaring waterfall. It is a gripping exploration of ambition, privilege, and the terrifying lengths someone will go to when they believe the universe has cheated them.
+                </p>
+                <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-lovelacers">Read more</button>
+              </div>
+
+              <div class="card__links" aria-label="Screenplay links">
+                <a class="btn btn--small" href="./Lovelacers-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read screenplay preview PDF (opens in a new tab)">Read Preview</a>
+                <a class="btn btn--small btn--ghost" href="https://blcklst.com/profile/tdevito" target="_blank" rel="noreferrer" aria-label="View hosted screenplay profile on The Black List (opens in a new tab)">Profile</a>
+                <a class="btn btn--small btn--ghost" href="mailto:tdevito@icloud.com?subject=Request%20Full%20Script&body=Hi%20Thomas%2C%0A%0AI%27d%20like%20to%20request%20the%20full%20script.%0A%0AName%3A%0AProject%20or%20Company%3A%0AHow%20you%20found%20the%20script%3A%0A" aria-label="Request the full script by email">Request Full Script</a>
+              </div>
             </div>
           </article>
 
-          <article class="card script-card">
-            <h3 class="card__title">In Progress</h3>
-            <div class="script-meta">
-              <p class="label">Title</p>
-              <p class="value">Under the Arcadian Sky</p>
+          <article class="card script-card script-card--arcadian">
+            <figure class="script-poster">
+              <img src="./UnderTheArcadianSky_poster.png" alt="Poster for Under the Arcadian Sky showing a star-filled mountain valley." width="1024" height="1536" loading="lazy" decoding="async" />
+            </figure>
 
-              <p class="label">Logline</p>
-              <p class="value">Haunted by a tragic past and a prophetic dream, a disillusioned tech worker accidentally collapses the global economy with a device that cures smartphone addiction, forcing her to pivot from corporate pariah to utopian architect in a battle for the future of human connection.</p>
-            </div>
+            <div class="script-card__body">
+              <header class="script-heading">
+                <h3 class="script-title">Under the Arcadian Sky</h3>
+              </header>
 
-            <p class="label label--spaced">Synopsis</p>
-            <p class="synopsis" id="synopsis-flowband" data-expanded="false">
-              Sarah Fiore is an undervalued programmer drifting through a life of unfulfilled potential, secretly carrying the guilt of her best friend Julia's overdose decades ago. Her stagnant reality is shattered when a concussion triggers a vivid, otherworldly dream, fulfilling a prophecy Julia made the night before she died. Waking with a newfound clarity and a technical blueprint, Sarah recruits her estranged friends, Terri and Nicole, to build the "FlowBand," a wearable device designed to sever the modern compulsion for digital connectivity. Fueled by intuition rather than business strategy, Sarah's mesmerizing, intense salesmanship turns the device into a global phenomenon, liberating millions from their screens.
-              <br /><br />
-              However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, crashing the stock market and splitting society into two hostile camps: those who have "woken up" and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal, public, and reputational attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
-              <br /><br />
-              The journey leads Sarah to the Canadian wilderness, where a brush with the harsh realities of off-grid survival convinces her that humanity cannot simply regress to nature; it must power its way forward. After discovering a brilliant but discredited engineer with a prototype for a safe, small-scale fission reactor, Sarah gambles her fortune on a radical pivot. She moves to establish a self-sustaining eco-society powered by this new energy, setting the stage for an ultimate confrontation between her budding egalitarian utopia and a desperate, capitalist "Old World" that wants her technology but fears her ideology.
-            </p>
-            <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-flowband">Read more</button>
+              <div class="script-logline">
+                <p class="label">Logline</p>
+                <p class="value">Haunted by a tragic past and a prophetic dream, a disillusioned tech worker accidentally collapses the global economy with a device that cures smartphone addiction, forcing her to pivot from corporate pariah to utopian architect in a battle for the future of human connection.</p>
+              </div>
 
-            <div class="card__links" aria-label="In progress links">
-              <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read Under the Arcadian Sky preview PDF (opens in a new tab)">Read Preview</a>
+              <div class="script-synopsis">
+                <p class="label label--spaced">Synopsis</p>
+                <p class="synopsis" id="synopsis-flowband" data-expanded="false">
+                  Sarah Fiore is an undervalued programmer drifting through a life of unfulfilled potential, secretly carrying the guilt of her best friend Julia's overdose decades ago. Her stagnant reality is shattered when a concussion triggers a vivid, otherworldly dream, fulfilling a prophecy Julia made the night before she died. Waking with a newfound clarity and a technical blueprint, Sarah recruits her estranged friends, Terri and Nicole, to build the "FlowBand," a wearable device designed to sever the modern compulsion for digital connectivity. Fueled by intuition rather than business strategy, Sarah's mesmerizing, intense salesmanship turns the device into a global phenomenon, liberating millions from their screens.
+                  <br /><br />
+                  However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, crashing the stock market and splitting society into two hostile camps: those who have "woken up" and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal, public, and reputational attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
+                  <br /><br />
+                  The journey leads Sarah to the Canadian wilderness, where a brush with the harsh realities of off-grid survival convinces her that humanity cannot simply regress to nature; it must power its way forward. After discovering a brilliant but discredited engineer with a prototype for a safe, small-scale fission reactor, Sarah gambles her fortune on a radical pivot. She moves to establish a self-sustaining eco-society powered by this new energy, setting the stage for an ultimate confrontation between her budding egalitarian utopia and a desperate, capitalist "Old World" that wants her technology but fears her ideology.
+                </p>
+                <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-flowband">Read more</button>
+              </div>
+
+              <div class="card__links" aria-label="In progress links">
+                <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read Under the Arcadian Sky preview PDF (opens in a new tab)">Read Preview</a>
+              </div>
             </div>
           </article>
         </div>
