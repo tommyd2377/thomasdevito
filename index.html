@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Thomas DeVito — freelance full-stack software engineer in Brooklyn, NYC. Software portfolio and screenwriting work." />
+  <meta name="description" content="Thomas DeVito — freelance full-stack software engineer in Brooklyn, NYC. AI, mobile, payments, Firebase, and product MVP work." />
   <title>Thomas DeVito</title>
   <link rel="icon" type="image/png" href="./headshot.png" />
   <link rel="shortcut icon" href="./headshot.png" />
@@ -674,6 +674,12 @@
       margin: 0;
     }
 
+    .card__desc a,
+    .contact-voice__desc a,
+    .ai-banner__title a {
+      font-weight: 800;
+    }
+
     .tags {
       list-style: none;
       padding: 0;
@@ -705,6 +711,15 @@
     .card:focus-within {
       background: var(--surface2);
       border-color: rgb(var(--primary-rgb) / 0.75);
+    }
+
+    .card:target {
+      scroll-margin-top: calc(var(--nav-h) + 18px);
+      background: var(--surface2);
+      border-color: rgb(var(--primary-rgb) / 0.95);
+      box-shadow:
+        inset 0 0 0 3px rgb(var(--accent-rgb) / 0.82),
+        0 0 0 3px rgb(var(--accent-rgb) / 0.28);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1166,7 +1181,6 @@
         <div class="nav__links" id="primaryNavLinks">
           <a href="#home">Home</a>
           <a href="#software">Software</a>
-          <a href="#screenwriting">Screenwriting</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
@@ -1201,15 +1215,15 @@
         <div class="hero__grid">
           <div>
             <p class="kicker">Thomas DeVito · Brooklyn, NYC · Freelance Full-Stack Engineer</p>
-            <h1 id="hero-title">Full-stack engineering with human judgment and AI-assisted velocity.</h1>
+            <h1 id="hero-title">Full-stack engineering for AI-integrated products, mobile apps, and MVP launches.</h1>
             <p class="lead">
-              I bring 10 years of software development experience to end-to-end builds across frontend, backend, payments, and smart contracts.
-              I combine human product judgment with AI-assisted research, implementation, and iteration to move faster without losing craftsmanship.
+              I'm a senior independent software engineer with 10 years of software development experience across AI-integrated products, mobile and web apps, payments, Firebase, and Solana prototypes.
+              I help founders and small teams turn ambiguous product goals into working software with clear execution.
             </p>
 
             <div class="hero__actions">
-              <a class="btn" href="#software">Explore software</a>
-              <a class="btn btn--ghost" href="#screenwriting">View screenwriting</a>
+              <a class="btn" href="#contact">Hire me for software / AI builds</a>
+              <a class="btn btn--ghost" href="#software">View selected projects</a>
             </div>
 
             <div class="hero__meta" aria-label="Quick contact links">
@@ -1228,13 +1242,13 @@
       <div class="container">
         <div class="ai-banner__inner">
           <p class="ai-banner__title">
-            Talk to Victoria, my AI voice assistant. She can answer questions about my history, skills, and projects. She's also really fun to talk to!
+            Victoria is a live AI voice system that can answer questions about my background, skills, and projects, then turn useful follow-ups into tasks in my private <a href="#flowpath-project" aria-label="Jump to the FlowPath project card">FlowPath</a> workspace.
           </p>
           <a class="ai-banner__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
             (929) 734-9187
           </a>
           <p class="ai-banner__stack">
-            I built Victoria with the OpenAI Realtime API and Twilio Media Streams using a WebSocket bridge. It's deployed as an Express web server on a Node.js runtime.
+            I built her with the OpenAI Realtime API, Twilio Media Streams, WebSockets, Node.js, and Express.
           </p>
         </div>
       </div>
@@ -1250,13 +1264,46 @@
         <header class="section__head">
           <p class="section__label">Software</p>
           <h2 id="software-title">Selected Projects</h2>
-          <p class="lead">Projects spanning AI voice systems, consumer apps, recommendation systems, and Solana protocols.</p>
+          <p class="lead">Projects spanning AI voice systems, mobile and web products, payments, Firebase, Solana prototypes, and focused consumer tools.</p>
         </header>
 
         <div class="grid projects" role="list" aria-label="Software projects">
           <article class="card" role="listitem">
+            <h3 class="card__title">Voice AI System (Victoria)</h3>
+            <p class="card__desc">Real-time AI phone assistant for live calls, voice automation, structured follow-ups, and <a href="#flowpath-project" aria-label="Jump to the FlowPath project card">FlowPath</a> task routing.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Node.js</li>
+              <li class="tag">Express</li>
+              <li class="tag">Twilio</li>
+              <li class="tag">OpenAI Realtime</li>
+              <li class="tag">WebSockets</li>
+              <li class="tag">AI Voice Agents</li>
+              <li class="tag">Private repo · live product available</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="tel:+19297349187" aria-label="Call Victoria at 929 734 9187">Call Victoria</a>
+            </div>
+          </article>
+
+          <article class="card" id="flowpath-project" role="listitem">
+            <h3 class="card__title">FlowPath</h3>
+            <p class="card__desc">AI prioritization and productivity dashboard with contextual memory, guided intake, next-move plans, and task generation.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">OpenAI</li>
+              <li class="tag">SQLite/libSQL</li>
+              <li class="tag">Clerk</li>
+              <li class="tag">Private repo · live product available</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://flowpathapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath (opens in a new tab)">View App</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
             <h3 class="card__title">FlowTime</h3>
-            <p class="card__desc">An accountability app for screen-time commitments, group challenges, proof uploads, and Stripe-backed pledge flows.</p>
+            <p class="card__desc">Behavioral accountability app for screen-time commitments, proof uploads, Firebase-backed verification flows, and Stripe pledge payments.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">React Native</li>
               <li class="tag">TypeScript</li>
@@ -1265,14 +1312,29 @@
               <li class="tag">Google Vision</li>
             </ul>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/tommyd2377/FlowTime" target="_blank" rel="noreferrer" aria-label="GitHub repository for FlowTime (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/FlowTime" target="_blank" rel="noreferrer" aria-label="Earlier FlowTime codebase on GitHub (opens in a new tab)">Earlier Codebase</a>
               <a class="btn btn--small btn--ghost" href="https://flowtimeapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowTime (opens in a new tab)">View App</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
+            <h3 class="card__title">Blndr (Composite Vault)</h3>
+            <p class="card__desc">Solana composite-token protocol for minting and redeeming basket-backed SPL assets with Anchor smart contracts and a Next.js dApp.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Solana</li>
+              <li class="tag">Anchor</li>
+              <li class="tag">Rust</li>
+              <li class="tag">Next.js</li>
+            </ul>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small" href="https://github.com/tommyd2377/composite_vault" target="_blank" rel="noreferrer" aria-label="GitHub repository for Blndr (Composite Vault) (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">View dApp</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
             <h3 class="card__title">GoTube</h3>
-            <p class="card__desc">A private, recommendation-free YouTube client with saved channels, reverse-chronological feeds, Watch Later, watched state, Shorts filtering, and a TV-friendly view.</p>
+            <p class="card__desc">Recommendation-free YouTube client for intentional viewing, saved channels, Watch Later, watched state, Shorts filtering, and a TV-friendly route.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">React</li>
               <li class="tag">TypeScript</li>
@@ -1288,7 +1350,7 @@
 
           <article class="card" role="listitem">
             <h3 class="card__title">GoPod</h3>
-            <p class="card__desc">A private RSS podcast player for chosen feeds, reverse-chronological episodes, persistent playback, local progress, and backup import/export without platform recommendations.</p>
+            <p class="card__desc">Recommendation-free RSS podcast player for chosen feeds, reverse-chronological episodes, persistent playback, local progress, and backup import/export.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
               <li class="tag">TypeScript</li>
@@ -1303,39 +1365,24 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">FlowPath</h3>
-            <p class="card__desc">A private AI prioritization dashboard for choosing what to do today, with guided situation intake, generated next-move plans, tasks, and contextual memory.</p>
+            <h3 class="card__title">GoPulse Core Protocol</h3>
+            <p class="card__desc">Solana content-validation and rewards protocol using Anchor, TypeScript tooling, and a PvP AMM model for incentive-aligned participation.</p>
             <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Next.js</li>
+              <li class="tag">Solana</li>
+              <li class="tag">Anchor</li>
               <li class="tag">TypeScript</li>
-              <li class="tag">OpenAI</li>
-              <li class="tag">SQLite/libSQL</li>
-              <li class="tag">Clerk</li>
+              <li class="tag">Vue</li>
+              <li class="tag">Rust</li>
             </ul>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://flowpathapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath (opens in a new tab)">View App</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">Voice AI System (Victoria)</h3>
-            <p class="card__desc">A Node.js backend that connects live Twilio calls to the OpenAI Realtime API so Victoria can answer questions and forward structured notes by SMS.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Node.js</li>
-              <li class="tag">Express</li>
-              <li class="tag">Twilio</li>
-              <li class="tag">OpenAI Realtime</li>
-              <li class="tag">WebSocket</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/tommyd2377/voice-ai-system" target="_blank" rel="noreferrer" aria-label="GitHub repository for Voice AI System (opens in a new tab)">GitHub</a>
-              <a class="btn btn--small btn--ghost" href="tel:+19297349187" aria-label="Call Victoria at 929 734 9187">Call Victoria</a>
+              <a class="btn btn--small" href="https://github.com/gopulse-labs/gopulse-core" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse Core Protocol (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://www.gpdapp.xyz" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse Core Protocol (opens in a new tab)">View dApp</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
             <h3 class="card__title">HeadlineHarmonies</h3>
-            <p class="card__desc">A headline-to-image app that turns live news into styled AI images with social sharing workflows.</p>
+            <p class="card__desc">AI image-generation app that turns live headlines into styled visuals with prompt workflows and social sharing paths.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
               <li class="tag">TypeScript</li>
@@ -1351,7 +1398,7 @@
 
           <article class="card" role="listitem">
             <h3 class="card__title">FilmPulse</h3>
-            <p class="card__desc">An AI-powered film discovery companion with conversational recommendations, streaming responses, and enriched metadata for each pick.</p>
+            <p class="card__desc">AI film discovery app with conversational recommendations, streaming responses, and metadata-rich picks for faster movie decisions.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
               <li class="tag">TypeScript</li>
@@ -1365,24 +1412,8 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">GoPulse Core Protocol</h3>
-            <p class="card__desc">A Solana protocol for content validation and rewards, built around a PvP AMM model for incentive-aligned participation.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Solana</li>
-              <li class="tag">Anchor</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">Vue</li>
-              <li class="tag">Rust</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/gopulse-labs/gopulse-core" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse Core Protocol (opens in a new tab)">GitHub</a>
-              <a class="btn btn--small btn--ghost" href="https://www.gpdapp.xyz" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse Core Protocol (opens in a new tab)">View dApp</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
             <h3 class="card__title">GoPulse</h3>
-            <p class="card__desc">A social news platform for web and mobile with read-before-share, invite-style subscriptions, and community quality controls.</p>
+            <p class="card__desc">Social news app for web and mobile with read-before-share flows, invite-style subscriptions, Firebase data, and Stripe payments.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">TypeScript</li>
               <li class="tag">Firebase</li>
@@ -1396,23 +1427,8 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">Blndr (Composite Vault)</h3>
-            <p class="card__desc">A Solana dApp for minting and redeeming basket-backed SPL composite tokens with an Anchor program and a Next.js front end.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Solana</li>
-              <li class="tag">Anchor</li>
-              <li class="tag">Rust</li>
-              <li class="tag">Next.js</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/tommyd2377/composite_vault" target="_blank" rel="noreferrer" aria-label="GitHub repository for Blndr (Composite Vault) (opens in a new tab)">GitHub</a>
-              <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">View dApp</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
             <h3 class="card__title">Hyper_Rank</h3>
-            <p class="card__desc">A Python collaborative filtering algorithm for ranking and recommending items based on user-to-user similarity and tiered popularity weighting.</p>
+            <p class="card__desc">Python recommendation engine using collaborative filtering, user-to-user similarity, and tiered popularity weighting.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Python</li>
               <li class="tag">Collaborative Filtering</li>
@@ -1430,14 +1446,153 @@
     <hr class="divider" />
 
     <!-- =========================
+         About
+         ========================= -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__label">About</p>
+          <h2 id="about-title">Senior independent software engineer for AI, mobile, and product MVPs.</h2>
+        </header>
+
+        <div class="about">
+          <figure class="headshot">
+            <img
+              src="./headshot.png"
+              alt="Headshot of Thomas DeVito"
+              width="720"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
+          <div class="about__body">
+            <p>
+              I'm a Brooklyn-based full-stack software developer with 10 years of software development experience, focused on AI-integrated products, mobile/web apps, payments, Firebase backends, and Solana prototypes.
+              I work best with founders and small teams that need someone who can reason through product tradeoffs, ship working software, and clean up ambiguity without requiring a large process around them.
+            </p>
+
+            <div>
+              <p class="label">Core skills</p>
+              <div class="skills" role="list" aria-label="Core skills list">
+                <span class="chip" role="listitem">TypeScript</span>
+                <span class="chip" role="listitem">JavaScript</span>
+                <span class="chip" role="listitem">Python</span>
+                <span class="chip" role="listitem">Rust</span>
+                <span class="chip" role="listitem">Ruby</span>
+                <span class="chip" role="listitem">Node.js</span>
+                <span class="chip" role="listitem">Express</span>
+                <span class="chip" role="listitem">React</span>
+                <span class="chip" role="listitem">React Native</span>
+                <span class="chip" role="listitem">Angular</span>
+                <span class="chip" role="listitem">Vue</span>
+                <span class="chip" role="listitem">Ionic</span>
+                <span class="chip" role="listitem">Firebase</span>
+                <span class="chip" role="listitem">Stripe</span>
+                <span class="chip" role="listitem">OpenAI API</span>
+                <span class="chip" role="listitem">OpenAI Realtime API</span>
+                <span class="chip" role="listitem">AI Voice Agents</span>
+                <span class="chip" role="listitem">Twilio Media Streams</span>
+                <span class="chip" role="listitem">WebSockets</span>
+                <span class="chip" role="listitem">Prompt/System Design</span>
+                <span class="chip" role="listitem">LLM App Architecture</span>
+                <span class="chip" role="listitem">AI-Assisted Development</span>
+                <span class="chip" role="listitem">Vercel</span>
+                <span class="chip" role="listitem">Cloudflare Workers</span>
+                <span class="chip" role="listitem">Supabase</span>
+                <span class="chip" role="listitem">Clerk</span>
+                <span class="chip" role="listitem">SQLite/libSQL</span>
+                <span class="chip" role="listitem">Solana</span>
+                <span class="chip" role="listitem">Anchor</span>
+                <span class="chip" role="listitem">Ruby on Rails</span>
+                <span class="chip" role="listitem">SQL</span>
+                <span class="chip" role="listitem">NoSQL</span>
+                <span class="chip" role="listitem">Postgres</span>
+                <span class="chip" role="listitem">HTML5</span>
+                <span class="chip" role="listitem">CSS3</span>
+                <span class="chip" role="listitem">SASS</span>
+                <span class="chip" role="listitem">Git/GitHub</span>
+                <span class="chip" role="listitem">TensorFlow.js</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="label">Services (examples)</p>
+              <ul class="services">
+                <li>AI voice agents and phone automation</li>
+                <li>React Native / Expo mobile app builds and rescue work</li>
+                <li>Firebase + Stripe product backends</li>
+                <li>OpenAI API integrations and LLM product workflows</li>
+                <li>MVP completion from messy or half-built codebases</li>
+                <li>App debugging, launch readiness, and pragmatic refactors</li>
+                <li>Solana / Anchor prototypes and dApps</li>
+              </ul>
+            </div>
+
+            <div class="pill-row" aria-label="Availability">
+              <span class="chip">Based in Brooklyn, NYC</span>
+              <span class="chip">Freelance-ready</span>
+              <span class="chip">AI / mobile / payments</span>
+              <span class="chip">Available for focused project work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- =========================
+         Contact
+         ========================= -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__label">Contact</p>
+          <h2 id="contact-title">Let's Build Something</h2>
+          <p class="lead">Tell me what you're building, what's broken, what success looks like, and your timeline.</p>
+        </header>
+
+        <div class="contact-grid">
+          <aside class="contact-links" aria-label="Direct contact links">
+            <section class="contact-voice" aria-label="Victoria voice assistant details">
+              <h3 class="contact-voice__title">Talk to Victoria, my AI voice assistant</h3>
+              <a class="contact-voice__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
+                (929) 734-9187
+              </a>
+              <p class="contact-voice__desc">
+                Victoria can answer questions about my software background and route follow-ups into my private <a href="#flowpath-project" aria-label="Jump to the FlowPath project card">FlowPath</a> workspace.
+              </p>
+            </section>
+            <a href="mailto:tdevito@icloud.com" aria-label="Email Thomas DeVito">
+              Email <span>tdevito@icloud.com</span>
+            </a>
+            <a href="tel:+13476768434" aria-label="Call Thomas DeVito">
+              Phone <span>(347) 676-8434</span>
+            </a>
+            <a href="https://LinkedIn.com/in/tdevito" target="_blank" rel="noreferrer" aria-label="Visit Thomas DeVito on LinkedIn (opens in a new tab)">
+              LinkedIn <span>/in/tdevito</span>
+            </a>
+            <a href="https://GitHub.com/tommyd2377" target="_blank" rel="noreferrer" aria-label="Visit Thomas DeVito on GitHub (opens in a new tab)">
+              GitHub <span>@tommyd2377</span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- =========================
          Screenwriting
          ========================= -->
     <section id="screenwriting" class="section" aria-labelledby="screenwriting-title">
       <div class="container">
         <header class="section__head">
-          <p class="section__label">Screenwriting</p>
-          <h2 id="screenwriting-title">Script Portfolio</h2>
-          <p class="lead">Alongside my software work, I've written two screenplays.</p>
+          <p class="section__label">Outside software</p>
+          <h2 id="screenwriting-title">One More Thing...</h2>
+          <p class="lead">Outside software, I write character-driven screenplays about technology, loneliness, and the search for meaning.</p>
         </header>
 
         <div class="grid script-grid" aria-label="Screenwriting portfolio">
@@ -1453,13 +1608,13 @@
 
               <div class="script-logline">
                 <p class="label">Logline</p>
-                <p class="value">When a successful engineering executive's legacy is threatened by a young, effortlessly gifted coding prodigy, she orchestrates a high-stakes act of sabotage that spirals into a beautifully haunting exploration of cosmic fairness and the lengths people will go to give their lives meaning.</p>
+                <p class="value">When a successful engineering executive's legacy is threatened by a young, effortlessly gifted software development prodigy, she orchestrates a high-stakes act of sabotage that spirals into a beautifully haunting exploration of cosmic fairness and the lengths people will go to give their lives meaning.</p>
               </div>
 
               <div class="script-synopsis">
                 <p class="label label--spaced">Synopsis</p>
                 <p class="synopsis" id="synopsis-lovelacers" data-expanded="false">
-                  Amanda Featherstone is a brilliant, meticulously controlled Senior Vice President of Engineering who has built her life with precision and relentless hard work. But her perfectly ordered world is thrown into chaos with the arrival of Tamsin DeBari, a 26-year-old self-taught coding prodigy. Tamsin is everything Amanda is not: chaotic, effortlessly gifted, and seemingly blessed with an unbreakable streak of cosmic luck. As Tamsin casually upends Amanda's complex architectural tech projects with infuriatingly simple solutions, a dark and bitter rivalry is ignited within their high-stakes firm.
+                  Amanda Featherstone is a brilliant, meticulously controlled Senior Vice President of Engineering who has built her life with precision and relentless hard work. But her perfectly ordered world is thrown into chaos with the arrival of Tamsin DeBari, a 26-year-old self-taught software development prodigy. Tamsin is everything Amanda is not: chaotic, effortlessly gifted, and seemingly blessed with an unbreakable streak of cosmic luck. As Tamsin casually upends Amanda's complex architectural tech projects with infuriatingly simple solutions, a dark and bitter rivalry is ignited within their high-stakes firm.
                   <br /><br />
                   What begins as a professional turf war quickly spirals into a dangerous psychological fixation. While Tamsin recklessly navigates her successes, surviving a major car crash with barely a scratch and effortlessly charming the company's elite executives, Amanda is consumed by a mounting, obsessive sense of profound unfairness. Driven by a desperate need to balance the cosmic scales, Amanda's jealousy begins to strip away her polished corporate veneer. The tension mounts as Amanda begins to blur the lines between professional ambition and covert personal sabotage.
                   <br /><br />
@@ -1508,131 +1663,6 @@
               </div>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- =========================
-         About
-         ========================= -->
-    <section id="about" class="section" aria-labelledby="about-title">
-      <div class="container">
-        <header class="section__head">
-          <p class="section__label">About</p>
-          <h2 id="about-title">Builder With Range</h2>
-          <p class="lead">A technical builder with a distinctly human creative edge across more than one endeavor.</p>
-        </header>
-
-        <div class="about">
-          <figure class="headshot">
-            <img
-              src="./headshot.png"
-              alt="Headshot of Thomas DeVito"
-              width="720"
-              height="720"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-
-          <div class="about__body">
-            <p>
-              Experienced and creative full-stack software developer, proficient in building complex web applications, algorithms, and smart contracts.
-              With 10 years of coding experience, I adapt quickly to new languages and frameworks and use AI tools for research, implementation, and iteration.
-              The direction, judgment, and creativity stay human while the tooling extends my speed and output.
-            </p>
-
-            <div>
-              <p class="label">Core skills</p>
-              <div class="skills" role="list" aria-label="Core skills list">
-                <span class="chip" role="listitem">TypeScript</span>
-                <span class="chip" role="listitem">JavaScript</span>
-                <span class="chip" role="listitem">Python</span>
-                <span class="chip" role="listitem">Rust</span>
-                <span class="chip" role="listitem">Ruby</span>
-                <span class="chip" role="listitem">Node.js</span>
-                <span class="chip" role="listitem">Express.js</span>
-                <span class="chip" role="listitem">React</span>
-                <span class="chip" role="listitem">Angular</span>
-                <span class="chip" role="listitem">Vue</span>
-                <span class="chip" role="listitem">Ionic</span>
-                <span class="chip" role="listitem">Firebase</span>
-                <span class="chip" role="listitem">Stripe</span>
-                <span class="chip" role="listitem">Solana</span>
-                <span class="chip" role="listitem">Anchor</span>
-                <span class="chip" role="listitem">Ruby on Rails</span>
-                <span class="chip" role="listitem">SQL</span>
-                <span class="chip" role="listitem">NoSQL</span>
-                <span class="chip" role="listitem">Postgres</span>
-                <span class="chip" role="listitem">HTML5</span>
-                <span class="chip" role="listitem">CSS3</span>
-                <span class="chip" role="listitem">SASS</span>
-                <span class="chip" role="listitem">Git/GitHub</span>
-                <span class="chip" role="listitem">TensorFlow.js</span>
-              </div>
-            </div>
-
-            <div>
-              <p class="label">Services (examples)</p>
-              <ul class="services">
-                <li>MVP builds with fast iteration loops</li>
-                <li>Stripe payments, subscriptions, and webhook reliability</li>
-                <li>Firebase backends (Auth, Firestore, Functions) with cost-conscious design</li>
-                <li>Smart contracts and on-chain integrations</li>
-                <li>Performance + reliability improvements</li>
-                <li>Architecture reviews and pragmatic refactors</li>
-              </ul>
-            </div>
-
-            <div class="pill-row" aria-label="Availability">
-              <span class="chip">Based in Brooklyn, NYC</span>
-              <span class="chip">Freelance-ready</span>
-              <span class="chip">One screenplay done, one in progress</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- =========================
-         Contact
-         ========================= -->
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <div class="container">
-        <header class="section__head">
-          <p class="section__label">Contact</p>
-          <h2 id="contact-title">Let's Build Something</h2>
-          <p class="lead">Reach out directly and tell me what you're building, what success looks like, and your timeline.</p>
-        </header>
-
-        <div class="contact-grid">
-          <aside class="contact-links" aria-label="Direct contact links">
-            <section class="contact-voice" aria-label="Victoria voice assistant details">
-              <h3 class="contact-voice__title">Talk to Victoria, my AI voice assistant</h3>
-              <a class="contact-voice__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
-                (929) 734-9187
-              </a>
-              <p class="contact-voice__desc">
-                Victoria can answer questions about my history and send me an SMS.
-              </p>
-            </section>
-            <a href="mailto:tdevito@icloud.com" aria-label="Email Thomas DeVito">
-              Email <span>tdevito@icloud.com</span>
-            </a>
-            <a href="tel:+13476768434" aria-label="Call Thomas DeVito">
-              Phone <span>(347) 676-8434</span>
-            </a>
-            <a href="https://LinkedIn.com/in/tdevito" target="_blank" rel="noreferrer" aria-label="Visit Thomas DeVito on LinkedIn (opens in a new tab)">
-              LinkedIn <span>/in/tdevito</span>
-            </a>
-            <a href="https://GitHub.com/tommyd2377" target="_blank" rel="noreferrer" aria-label="Visit Thomas DeVito on GitHub (opens in a new tab)">
-              GitHub <span>@tommyd2377</span>
-            </a>
-          </aside>
         </div>
       </div>
     </section>
