@@ -621,6 +621,11 @@
     .hero__meta a { text-decoration: none; }
     .hero__meta a:hover { text-decoration: underline; }
 
+    .hero__writing {
+      margin-top: 1.15rem;
+      font-size: 0.92rem;
+    }
+
     .hero__actions {
       display: flex;
       flex-wrap: wrap;
@@ -761,105 +766,53 @@
     /* =========================
        Screenwriting
        ========================= */
-    .script-grid {
-      grid-template-columns: 1fr;
-      gap: 1.15rem;
-    }
+    .script-grid { grid-template-columns: 1fr; }
 
     .script-card {
-      --script-accent: var(--accent-rgb);
-      position: relative;
       grid-template-columns: minmax(220px, 310px) minmax(0, 1fr);
-      gap: clamp(1rem, 3vw, 2rem);
+      gap: 1.5rem;
       align-items: start;
-      padding: clamp(1rem, 2.2vw, 1.35rem);
-      overflow: hidden;
-      border-color: rgb(var(--script-accent) / 0.32);
-      background:
-        linear-gradient(135deg, rgb(var(--script-accent) / 0.12), rgb(var(--surface-rgb) / 0.96) 34%, var(--surface));
     }
-
-    .script-card::before {
-      content: "";
-      position: absolute;
-      top: 1.1rem;
-      bottom: 1.1rem;
-      left: 0;
-      width: 4px;
-      border-radius: 999px;
-      background: rgb(var(--script-accent));
-      opacity: 0.95;
-    }
-
-    .script-card:hover,
-    .script-card:focus-within {
-      border-color: rgb(var(--script-accent) / 0.62);
-      background:
-        linear-gradient(135deg, rgb(var(--script-accent) / 0.16), rgb(var(--surface-rgb) / 0.98) 34%, var(--surface2));
-    }
-
-    .script-card--lovelacers { --script-accent: 160 76 174; }
-    .script-card--arcadian { --script-accent: 116 140 255; }
 
     .script-card__body {
       display: grid;
-      gap: 0.85rem;
+      gap: 0.8rem;
       min-width: 0;
     }
 
     .script-heading {
       display: grid;
       gap: 0.55rem;
-      max-width: 68ch;
     }
 
-    .script-title {
-      margin: 0;
-      color: var(--text);
-      font-size: clamp(1.75rem, 3vw, 2.35rem);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
+    .script-title { color: var(--text); }
 
     .script-logline {
       display: grid;
       gap: 0.4rem;
       min-width: 0;
-      max-width: 66ch;
     }
 
-    .script-logline .value {
-      color: var(--text);
-      font-size: clamp(1rem, 1.4vw, 1.12rem);
-      line-height: 1.6;
-    }
+    .script-logline .value { color: var(--muted); }
 
     .script-poster {
       margin: 0;
-      position: relative;
+      position: sticky;
+      top: calc(var(--nav-h) + 1.1rem);
+      align-self: start;
       width: 100%;
       max-width: 310px;
       justify-self: center;
       overflow: hidden;
-      border: 1px solid rgb(var(--script-accent) / 0.48);
-      border-radius: calc(var(--radius-sm) - 4px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
       background: var(--surface2);
-      box-shadow: 0 24px 54px rgb(var(--script-accent) / 0.18);
-    }
-
-    .script-poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
-      pointer-events: none;
     }
 
     .script-poster img {
-      display: block;
       width: 100%;
       aspect-ratio: 2 / 3;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .label {
@@ -871,49 +824,26 @@
       margin: 0;
     }
 
-    .label--spaced {
-      margin-top: 0;
-    }
-
+    .label--spaced { margin-top: 0; }
     .value { color: var(--text); margin: 0; }
+    .synopsis { margin: 0; }
+    .synopsis-panel > .synopsis { padding-top: 0.8rem; }
 
-    .script-synopsis {
-      display: grid;
-      gap: 0.55rem;
-      max-width: 72ch;
-    }
-
-    .synopsis {
-      margin-top: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 0;
-    }
-
-    .synopsis[data-expanded="false"] {
-      max-height: 10.2em;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .synopsis[data-expanded="false"]::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2.4em;
-      background: linear-gradient(180deg, rgb(var(--surface-rgb) / 0), var(--surface));
-      pointer-events: none;
-    }
-
-    .synopsis-toggle {
+    .synopsis-toggle,
+    .synopsis-close {
       width: fit-content;
+      min-height: 44px;
     }
 
-    .script-card .card__links {
-      margin-top: 0.15rem;
+    .synopsis-close { margin-top: 0.8rem; }
+
+    .disclosure-panel {
+      display: flow-root;
+      overflow: hidden;
     }
+
+    .disclosure-panel[hidden] { display: none; }
+    .card { overflow-anchor: none; }
 
     @media (max-width: 760px) {
       .script-card {
@@ -921,33 +851,14 @@
         gap: 1rem;
       }
 
-      .script-card::before {
-        top: 0.95rem;
-        right: 0.95rem;
-        bottom: auto;
-        left: 0.95rem;
-        width: auto;
-        height: 3px;
-      }
-
       .script-poster {
-        width: min(82%, 320px);
-        margin-top: 0.4rem;
+        position: static;
+        width: min(82%, 310px);
       }
     }
 
     @media (max-width: 520px) {
-      .script-card {
-        padding: 0.95rem;
-      }
-
-      .script-poster {
-        width: min(86%, 300px);
-      }
-
-      .script-title {
-        font-size: 1.65rem;
-      }
+      .script-poster { width: min(86%, 300px); }
     }
 
     .bullets {
@@ -1146,52 +1057,6 @@
       border-color: rgb(var(--primary-rgb) / 0.75);
     }
 
-    .contact-next {
-      display: grid;
-      justify-items: center;
-      gap: 0.65rem;
-      margin-top: 1.35rem;
-      padding-top: 1.1rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .contact-next__copy {
-      display: grid;
-      gap: 0.25rem;
-      max-width: 58ch;
-    }
-
-    .contact-next__label {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .contact-next__text {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .contact-next__arrow {
-      display: inline-grid;
-      place-items: center;
-      width: 2.35rem;
-      height: 2.35rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      color: var(--text);
-      font-size: 1.35rem;
-      font-weight: 900;
-      line-height: 1;
-      text-decoration: none;
-    }
-
     @media (min-width: 900px) {
       .contact-grid { grid-template-columns: 1fr; }
     }
@@ -1206,16 +1071,24 @@
     }
 
     .footer__inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      justify-items: center;
       gap: 1rem;
+      text-align: center;
+    }
+
+    .footer__presented {
+      margin: 0;
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 800;
     }
 
     .social {
       display: inline-flex;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
       gap: 0.75rem;
     }
 
@@ -1231,13 +1104,31 @@
       text-decoration: none;
     }
 
+    .social a:hover,
+    .social a:focus-visible {
+      border-color: rgb(var(--primary-rgb) / 0.75);
+    }
+
     .social svg { width: 20px; height: 20px; }
 
-    .footer__copy {
+    .footer__made-in {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
       margin: 0;
       color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 0.92rem;
+      font-size: 1rem;
+    }
+
+    .footer__heart {
+      display: inline-block;
+      width: 1.15em;
+      height: 1.15em;
+      color: #e25555;
+      fill: currentColor;
+      flex-shrink: 0;
+      transform: translateY(0.06em);
     }
   </style>
 </head>
@@ -1257,6 +1148,7 @@
           <a href="#home">Home</a>
           <a href="#software">Software</a>
           <a href="#about">About</a>
+          <a href="#screenwriting">Screenplays</a>
           <a href="#contact">Contact</a>
         </div>
 
@@ -1292,8 +1184,8 @@
             <p class="kicker">Thomas DeVito · Brooklyn, NYC · Freelance Full-Stack Engineer</p>
             <h1 id="hero-title">Full-stack engineering for AI-integrated products, mobile apps, and MVP launches.</h1>
             <p class="lead">
-              I'm a senior independent software engineer with 10 years of software development experience across AI-integrated products, mobile and web apps, payments, Firebase, and Solana prototypes.
-              I help founders and small teams turn ambiguous product goals into working software with clear execution.
+              I'm a senior independent software engineer with 10 years of experience building custom software, including mobile and web apps, payment systems, and AI-integrated products.
+              I help founders, small businesses, and individuals turn ideas into working products, from early prototypes to launch.
             </p>
 
             <div class="hero__actions">
@@ -1307,6 +1199,7 @@
               <a href="https://LinkedIn.com/in/tdevito" target="_blank" rel="noreferrer">LinkedIn</a>
               <a href="https://GitHub.com/tommyd2377" target="_blank" rel="noreferrer">GitHub</a>
             </div>
+            <p class="hero__writing"><a href="#screenwriting">I also write screenplays. Explore the stories &rarr;</a></p>
           </div>
 
         </div>
@@ -1337,9 +1230,8 @@
     <section id="software" class="section" aria-labelledby="software-title">
       <div class="container">
         <header class="section__head">
-          <p class="section__label">Software</p>
-          <h2 id="software-title">Selected Projects</h2>
-          <p class="lead">Explore the products, then open “How it’s built” to see how the technology makes each experience work.</p>
+          <h2 id="software-title">Software</h2>
+          <p class="lead">Explore the products, then open “How I Built It” to see the technology I used and how it works together.</p>
         </header>
 
         <div class="grid projects" role="list" aria-label="Software projects">
@@ -1354,8 +1246,8 @@
               <li class="tag">Private repo · live product available</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Node.js and Express bridge Twilio phone audio to OpenAI over WebSockets. Bidirectional audio streaming, speech detection, and interruption handling make an ordinary phone call the interface.</p>
+              <summary>How I Built It</summary>
+              <p>I built Victoria with Node.js and Express, connecting Twilio phone audio to OpenAI over WebSockets. I used bidirectional audio streaming, speech detection, and interruption handling to make an ordinary phone call the interface.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="tel:+19297349187" aria-label="Call Victoria at 929 734 9187">Call Victoria</a>
@@ -1374,8 +1266,8 @@
               <li class="tag">Private repo · live product available</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Next.js and React pair GPT-Live conversation with a research backend; WebRTC carries browser audio. OpenUI renders structured results as cards and comparisons, Motion animates transitions, and Zod validates the visual data.</p>
+              <summary>How I Built It</summary>
+              <p>I built FlowPath with Next.js and React, using WebRTC for GPT-Live audio and a research backend for results. I render cards and comparisons with OpenUI, animate transitions with Motion, and validate visual data with Zod.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://flowpathapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath (opens in a new tab)">Explore FlowPath</a>
@@ -1393,8 +1285,8 @@
               <li class="tag">Stripe</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Expo and React Native Web deliver an installable PWA. Firebase synchronizes vows and rankings, Google Cloud Vision extracts screenshot evidence, and optional Stripe pledges connect the outcome to a charitable donation.</p>
+              <summary>How I Built It</summary>
+              <p>I built FlowTime as an installable PWA with Expo and React Native Web. I used Firebase to synchronize vows and rankings, Google Cloud Vision to extract screenshot evidence, and optional Stripe pledges to connect outcomes to charitable donations.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://flowtimeapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowTime (opens in a new tab)">Try FlowTime</a>
@@ -1413,8 +1305,8 @@
               <li class="tag">Web Share</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Next.js connects Google News RSS to OpenAI image generation. A vision-aware caption pipeline adds shareable text, while native browser sharing and download fallbacks carry the result into other apps.</p>
+              <summary>How I Built It</summary>
+              <p>I built HeadlineHarmonies with Next.js, connecting Google News RSS to OpenAI image generation. I added a vision-aware caption pipeline, native browser sharing, and download fallbacks so the artwork can move into other apps.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://www.headlineharmonies.xyz/" target="_blank" rel="noreferrer" aria-label="Live demo for HeadlineHarmonies (opens in a new tab)">Create from headlines</a>
@@ -1433,8 +1325,8 @@
               <li class="tag">Taste matching</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Next.js pairs OpenAI Responses with TMDB search, taste analysis, and candidate reranking. SSE streams the conversation as rich movie cards arrive, with filters for theaters, streaming services, and rentals.</p>
+              <summary>How I Built It</summary>
+              <p>I built FilmPulse with Next.js, combining OpenAI Responses with TMDB search, taste analysis, and candidate reranking. I used SSE to stream the conversation alongside movie cards, with filters for theaters, streaming services, and rentals.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://filmpulseai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for FilmPulse (opens in a new tab)">Find a film</a>
@@ -1453,8 +1345,8 @@
               <li class="tag">Capacitor</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Angular and Ionic power the interface, with Firebase authentication and Firestore subscriptions keeping feeds and discussions current. Capacitor and Cordova extend the same codebase toward mobile packaging.</p>
+              <summary>How I Built It</summary>
+              <p>I built GoPulse with Angular and Ionic, using Firebase authentication and Firestore subscriptions to keep feeds and discussions current. I used Capacitor and Cordova to extend the same codebase toward mobile packaging.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://gopulse-71176.web.app" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse (opens in a new tab)">Explore GoPulse</a>
@@ -1473,8 +1365,8 @@
               <li class="tag">Zod</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Next.js handles shared deal rooms, Prisma stores them in PostgreSQL, and server-side OpenAI Responses produce structured analysis. Zod validates the output into price ranges, uncertainty notes, and negotiation drafts.</p>
+              <summary>How I Built It</summary>
+              <p>I built FairDeal with Next.js, using Prisma and PostgreSQL to store shared deal rooms. I used server-side OpenAI Responses for structured analysis and Zod to validate price ranges, uncertainty notes, and negotiation drafts.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://fairdeal-ai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live app for FairDeal.ai (opens in a new tab)">Explore the deal room</a>
@@ -1493,8 +1385,8 @@
               <li class="tag">Next.js</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Rust and Anchor implement basket ratios, token minting, and redemption on-chain. The Next.js wallet interface assembles deposits, while program-derived vaults hold the SPL tokens that back each composite.</p>
+              <summary>How I Built It</summary>
+              <p>I built Blndr’s on-chain basket ratios, minting, and redemption in Rust with Anchor. I used Next.js for the wallet interface and program-derived vaults to hold the SPL tokens backing each composite.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">Explore Blndr</a>
@@ -1513,8 +1405,8 @@
               <li class="tag">Fire TV</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>React and TypeScript power the player; Cloudflare Workers connect YouTube data to Supabase, while IndexedDB caches the library. An Android WebView wrapper adapts the same interface for Fire TV remotes.</p>
+              <summary>How I Built It</summary>
+              <p>I built GoTube’s player with React and TypeScript, using Cloudflare Workers to connect YouTube data to Supabase and IndexedDB to cache the library. I adapted the same interface for Fire TV remotes with an Android WebView wrapper.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://gotube-ahi.pages.dev/" target="_blank" rel="noreferrer" aria-label="Live app for GoTube (opens in a new tab)">View GoTube</a>
@@ -1533,8 +1425,8 @@
               <li class="tag">Local Storage</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Next.js parses RSS feeds on the server; React and the Media Session API power persistent audio and system playback controls. Browser storage saves progress, with JSON backups to move your library.</p>
+              <summary>How I Built It</summary>
+              <p>I built GoPod with Next.js to parse RSS feeds server-side, plus React and the Media Session API for persistent audio and system controls. I used browser storage for progress and JSON backups to make the library portable.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://podcast-app-livid.vercel.app/" target="_blank" rel="noreferrer" aria-label="Live app for GoPod (opens in a new tab)">Open GoPod</a>
@@ -1553,8 +1445,8 @@
               <li class="tag">Arweave</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Rust and Anchor encode posting, long/short pools, threshold-based resolution, and reward claims. A Vue 3 wallet interface browses markets and uses Bundlr and Arweave for media uploads.</p>
+              <summary>How I Built It</summary>
+              <p>I built the protocol’s on-chain posting, long/short pools, threshold-based resolution, and reward claims in Rust with Anchor. I used Vue 3 for the wallet-connected market browser, with Bundlr and Arweave handling media uploads.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://gpapp.vercel.app/#/" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse Core Protocol (opens in a new tab)">Explore the dApp</a>
@@ -1572,8 +1464,8 @@
               <li class="tag">Explainable Ranking</li>
             </ul>
             <details class="card__details">
-              <summary>How it’s built</summary>
-              <p>Built from Python’s standard library, Hyper_Rank combines collaborative filtering, popularity tiers, weighted user similarity, and logarithmic scoring. Each recommendation exposes its contributing users and scores, making the algorithm easy to explore.</p>
+              <summary>How I Built It</summary>
+              <p>I built Hyper_Rank with Python’s standard library, combining collaborative filtering, popularity tiers, weighted user similarity, and logarithmic scoring. I exposed the contributing users and scores behind each recommendation so the ranking is easy to inspect.</p>
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small" href="https://github.com/tommyd2377/Hyper_Rank" target="_blank" rel="noreferrer" aria-label="GitHub repository for Hyper_Rank (opens in a new tab)">Explore the algorithm</a>
@@ -1591,8 +1483,7 @@
     <section id="about" class="section" aria-labelledby="about-title">
       <div class="container">
         <header class="section__head">
-          <p class="section__label">About</p>
-          <h2 id="about-title">Senior independent software engineer for AI, mobile, and product MVPs.</h2>
+          <h2 id="about-title">About</h2>
         </header>
 
         <div class="about">
@@ -1608,75 +1499,119 @@
           </figure>
 
           <div class="about__body">
-            <p>
-              I'm a Brooklyn-based full-stack software developer with 10 years of software development experience, focused on AI-integrated products, mobile/web apps, payments, Firebase backends, and Solana prototypes.
-              I work best with founders and small teams that need someone who can reason through product tradeoffs, ship working software, and clean up ambiguity without requiring a large process around them.
-            </p>
-
             <div>
               <p class="label">Core skills</p>
               <div class="skills" role="list" aria-label="Core skills list">
-                <span class="chip" role="listitem">TypeScript</span>
-                <span class="chip" role="listitem">JavaScript</span>
-                <span class="chip" role="listitem">Python</span>
-                <span class="chip" role="listitem">Rust</span>
-                <span class="chip" role="listitem">Ruby</span>
-                <span class="chip" role="listitem">Node.js</span>
-                <span class="chip" role="listitem">Express</span>
-                <span class="chip" role="listitem">React</span>
-                <span class="chip" role="listitem">React Native</span>
-                <span class="chip" role="listitem">Angular</span>
-                <span class="chip" role="listitem">Vue</span>
-                <span class="chip" role="listitem">Ionic</span>
-                <span class="chip" role="listitem">Firebase</span>
-                <span class="chip" role="listitem">Stripe</span>
-                <span class="chip" role="listitem">OpenAI API</span>
-                <span class="chip" role="listitem">OpenAI Realtime API</span>
-                <span class="chip" role="listitem">AI Voice Agents</span>
-                <span class="chip" role="listitem">Twilio Media Streams</span>
-                <span class="chip" role="listitem">WebSockets</span>
-                <span class="chip" role="listitem">Prompt/System Design</span>
-                <span class="chip" role="listitem">LLM App Architecture</span>
-                <span class="chip" role="listitem">AI-Assisted Development</span>
-                <span class="chip" role="listitem">Vercel</span>
-                <span class="chip" role="listitem">Cloudflare Workers</span>
-                <span class="chip" role="listitem">Supabase</span>
-                <span class="chip" role="listitem">Clerk</span>
-                <span class="chip" role="listitem">SQLite/libSQL</span>
-                <span class="chip" role="listitem">Solana</span>
-                <span class="chip" role="listitem">Anchor</span>
-                <span class="chip" role="listitem">Ruby on Rails</span>
-                <span class="chip" role="listitem">SQL</span>
-                <span class="chip" role="listitem">NoSQL</span>
-                <span class="chip" role="listitem">Postgres</span>
-                <span class="chip" role="listitem">HTML5</span>
-                <span class="chip" role="listitem">CSS3</span>
-                <span class="chip" role="listitem">SASS</span>
-                <span class="chip" role="listitem">Git/GitHub</span>
-                <span class="chip" role="listitem">TensorFlow.js</span>
+                <span class="chip" role="listitem">Product thinking</span>
+                <span class="chip" role="listitem">Systems architecture</span>
+                <span class="chip" role="listitem">Interface and interaction design</span>
+                <span class="chip" role="listitem">Conversational experience design</span>
+                <span class="chip" role="listitem">Debugging and product delivery</span>
               </div>
             </div>
 
             <div>
-              <p class="label">Services (examples)</p>
+              <p class="label">What could I build for you?</p>
               <ul class="services">
-                <li>AI voice agents and phone automation</li>
-                <li>React Native / Expo mobile app builds and rescue work</li>
-                <li>Firebase + Stripe product backends</li>
-                <li>OpenAI API integrations and LLM product workflows</li>
-                <li>MVP completion from messy or half-built codebases</li>
-                <li>App debugging, launch readiness, and pragmatic refactors</li>
-                <li>Solana / Anchor prototypes and dApps</li>
+                <li>An AI assistant people can call or talk to</li>
+                <li>A web or mobile app built around your idea</li>
+                <li>Search and recommendation experiences</li>
+                <li>Creative tools for images, media, and content</li>
+                <li>A working prototype to put in front of users</li>
+                <li>An unfinished app completed and brought to launch</li>
               </ul>
             </div>
-
-            <div class="pill-row" aria-label="Availability">
-              <span class="chip">Based in Brooklyn, NYC</span>
-              <span class="chip">Freelance-ready</span>
-              <span class="chip">AI / mobile / payments</span>
-              <span class="chip">Available for focused project work</span>
-            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- =========================
+         Screenwriting
+         ========================= -->
+    <section id="screenwriting" class="section screenwriting" aria-labelledby="screenwriting-title">
+      <div class="container">
+        <header class="section__head">
+          <h2 id="screenwriting-title">Screenplays</h2>
+          <p class="lead">I’ve always felt a tension between the engineer and the artist in me. Software engages my love of ideas, systems, and invention, while film and music move me on a deeper emotional level. The beauty, meaning, and emotional power of a great film or piece of music can change us forever, in ways big and small.</p>
+          <p class="lead">For years, I’ve felt torn between coding and filmmaking. I still live with that tension, but there’s no rule saying a person can’t excel at both.</p>
+          <p class="lead">The software projects above reflect my creative intellect; these screenplays express my emotional and spiritual life.</p>
+        </header>
+
+        <div class="grid script-grid" aria-label="Screenwriting portfolio">
+          <article class="card script-card script-card--lovelacers">
+            <figure class="script-poster">
+              <img src="./Lovelacers_poster.png" alt="Poster for Lovelacers showing a secluded forest waterfall." width="1030" height="1527" loading="lazy" decoding="async" />
+            </figure>
+
+            <div class="script-card__body">
+              <header class="script-heading">
+                <p class="label">01 / Talent, obsession &amp; the lives we imagine</p>
+                <h3 class="script-title">Lovelacers</h3>
+              </header>
+
+              <div class="script-logline">
+                <p class="label">Logline</p>
+                <p class="value">A successful tech executive becomes obsessed with a young software prodigy whose effortless brilliance and uncanny good fortune challenge everything she believes about talent, success, and the life she should have had.</p>
+              </div>
+
+              <div class="card__links" aria-label="Screenplay links">
+                <a class="btn btn--small" href="./Lovelacers-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read the opening pages of Lovelacers (PDF, opens in a new tab)">Read the Opening Pages &rarr;</a>
+              </div>
+
+              <div class="script-synopsis">
+                <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-lovelacers">Read synopsis</button>
+                <div class="disclosure-panel synopsis-panel" id="synopsis-lovelacers" hidden>
+                  <p class="synopsis">
+                  Amanda Featherstone is a highly successful tech executive who has built her life around discipline, sacrifice, and hard work. Confident in her place within Manhattan’s elite tech world, she believes success can ultimately be explained by effort, competence, and good decisions. That certainty is shaken by the arrival of Tamsin DeBari, a twenty-six-year-old software engineer whose extraordinary talent appears almost effortless. Amanda finds herself instantly drawn to and fascinated by Tamsin. Though Tamsin never finished high school, she possesses a remarkable ability to reduce complex technical problems into elegant, deceptively simple solutions. What begins as professional curiosity soon becomes something far more personal as Amanda struggles to understand how one person can seem so naturally gifted, so casually successful, and so consistently fortunate.
+                  <br /><br />
+                  As the summer unfolds, Amanda becomes increasingly preoccupied with Tamsin’s life. Each new discovery only deepens her fixation: a childhood spent surrounded by mathematics and computer science, a career marked by extraordinary achievement, and a series of seemingly impossible escapes from disaster. Yet the closer Amanda gets to her, the more complicated the picture becomes. Beneath Tamsin’s brilliance and apparent good fortune is a young woman haunted by her own dissatisfaction, convinced that her life has somehow fallen short of what it could have been. While Amanda sees someone blessed by fate, Tamsin increasingly sees herself as another person whose life has drifted away from the future she once imagined.
+                  <br /><br />
+                  Their paths become increasingly intertwined through a pair of company retreats in the Catskill Mountains, whose mystical, almost surreal beauty begins to leave a lasting impression on both women. Amid ancient forests, mysterious encounters, near-fatal accidents, and profound changes in self-perception, the story gradually expands beyond its corporate origins into something more intimate and existential. As Amanda becomes consumed by the possibility that there is a hidden pattern behind the events unfolding around Tamsin, her search for answers pulls her deeper into obsession. What begins as a story about talent and envy evolves into an exploration of luck, unrealized potential, meaning, and the stories people tell themselves to make sense of a world that often seems arbitrary. As their paths converge at Kaaterskill Falls, both women are forced to confront the distance between the lives they imagined and the lives they actually have.
+                  </p>
+                  <button class="btn btn--small btn--ghost synopsis-close" type="button" aria-expanded="false" aria-controls="synopsis-lovelacers">Close synopsis</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card script-card script-card--arcadian">
+            <figure class="script-poster">
+              <img src="./UnderTheArcadianSky_poster.png" alt="Poster for Under the Arcadian Sky showing a star-filled mountain valley." width="1024" height="1536" loading="lazy" decoding="async" />
+            </figure>
+
+            <div class="script-card__body">
+              <header class="script-heading">
+                <p class="label">02 / Technology, freedom &amp; human connection</p>
+                <h3 class="script-title">Under the Arcadian Sky</h3>
+              </header>
+
+              <div class="script-logline">
+                <p class="label">Logline</p>
+                <p class="value">A disillusioned programmer builds a device that frees people from their phones—and destabilizes the world built on their attention. What begins as a personal awakening becomes a fight for the future of human connection.</p>
+              </div>
+
+              <div class="card__links" aria-label="In progress links">
+                <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read the opening pages of Under the Arcadian Sky (PDF, opens in a new tab)">Read the Opening Pages &rarr;</a>
+              </div>
+
+              <div class="script-synopsis">
+                <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-flowband">Read synopsis</button>
+                <div class="disclosure-panel synopsis-panel" id="synopsis-flowband" hidden>
+                  <p class="synopsis">
+                  Sarah Fiore is an undervalued programmer drifting through a life of unfulfilled potential, secretly carrying the guilt of her best friend Julia's overdose decades ago. Her stagnant reality is shattered when a concussion triggers a vivid, otherworldly dream, fulfilling a prophecy Julia made the night before she died. Waking with a newfound clarity and a technical blueprint, Sarah recruits her estranged friends, Terri and Nicole, to build the "FlowBand," a wearable device designed to sever the modern compulsion for digital connectivity. Fueled by intuition rather than business strategy, Sarah's mesmerizing, intense salesmanship turns the device into a global phenomenon, liberating millions from their screens.
+                  <br /><br />
+                  However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, crashing the stock market and splitting society into two hostile camps: those who have "woken up" and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal, public, and reputational attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
+                  <br /><br />
+                  The journey leads Sarah to the Canadian wilderness, where a brush with the harsh realities of off-grid survival convinces her that humanity cannot simply regress to nature; it must power its way forward. After discovering a brilliant but discredited engineer with a prototype for a safe, small-scale fission reactor, Sarah gambles her fortune on a radical pivot. She moves to establish a self-sustaining eco-society powered by this new energy, setting the stage for an ultimate confrontation between her budding egalitarian utopia and a desperate, capitalist "Old World" that wants her technology but fears her ideology.
+                  </p>
+                  <button class="btn btn--small btn--ghost synopsis-close" type="button" aria-expanded="false" aria-controls="synopsis-flowband">Close synopsis</button>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1689,22 +1624,11 @@
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container">
         <header class="section__head">
-          <p class="section__label">Contact</p>
-          <h2 id="contact-title">Let's Build Something</h2>
-          <p class="lead">Tell me what you're building, what's broken, what success looks like, and your timeline.</p>
+          <h2 id="contact-title">Contact</h2>
         </header>
 
         <div class="contact-grid">
           <aside class="contact-links" aria-label="Direct contact links">
-            <section class="contact-voice" aria-label="Victoria voice assistant details">
-              <h3 class="contact-voice__title">Talk to Victoria, my AI voice assistant</h3>
-              <a class="contact-voice__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
-                (929) 734-9187
-              </a>
-              <p class="contact-voice__desc">
-                Get to know my work through a natural, real-time conversation with Victoria.
-              </p>
-            </section>
             <a href="mailto:tdevito@icloud.com" aria-label="Email Thomas DeVito">
               Email <span>tdevito@icloud.com</span>
             </a>
@@ -1720,127 +1644,57 @@
           </aside>
         </div>
 
-        <div class="contact-next" aria-label="Additional portfolio section">
-          <div class="contact-next__copy">
-            <p class="contact-next__text">P.S. for the cinephiles out there, I have a couple of really interesting screenplays that you may be interested in checking out.</p>
-          </div>
-          <a class="contact-next__arrow" href="#screenwriting" aria-label="Jump to writing section">&darr;</a>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- =========================
-         Screenwriting
-         ========================= -->
-    <section id="screenwriting" class="section" aria-labelledby="screenwriting-title">
-      <div class="container">
-        <header class="section__head">
-          <h2 id="screenwriting-title">One More Thing...</h2>
-          <p class="lead">Outside software, I write character-driven screenplays about modern technology, loneliness, spiritual hunger, and the search for meaning.</p>
-        </header>
-
-        <div class="grid script-grid" aria-label="Screenwriting portfolio">
-          <article class="card script-card script-card--lovelacers">
-            <figure class="script-poster">
-              <img src="./Lovelacers_poster.png" alt="Poster for Lovelacers showing a secluded forest waterfall." width="1030" height="1527" loading="lazy" decoding="async" />
-            </figure>
-
-            <div class="script-card__body">
-              <header class="script-heading">
-                <h3 class="script-title">Lovelacers</h3>
-              </header>
-
-              <div class="script-logline">
-                <p class="label">Logline</p>
-                <p class="value">When a successful tech executive becomes fascinated by a young software prodigy whose extraordinary talent and apparent good fortune seem to defy explanation, professional admiration gradually gives way to obsession as both women struggle to reconcile the lives they imagined with the lives they actually have.</p>
-              </div>
-
-              <div class="script-synopsis">
-                <p class="label label--spaced">Synopsis</p>
-                <p class="synopsis" id="synopsis-lovelacers" data-expanded="false">
-                  Amanda Featherstone is a highly successful tech executive who has built her life around discipline, sacrifice, and hard work. Confident in her place within Manhattan’s elite tech world, she believes success can ultimately be explained by effort, competence, and good decisions. That certainty is shaken by the arrival of Tamsin DeBari, a twenty-six-year-old software engineer whose extraordinary talent appears almost effortless. Amanda finds herself instantly drawn to and fascinated by Tamsin. Though Tamsin never finished high school, she possesses a remarkable ability to reduce complex technical problems into elegant, deceptively simple solutions. What begins as professional curiosity soon becomes something far more personal as Amanda struggles to understand how one person can seem so naturally gifted, so casually successful, and so consistently fortunate.
-                  <br /><br />
-                  As the summer unfolds, Amanda becomes increasingly preoccupied with Tamsin’s life. Each new discovery only deepens her fixation: a childhood spent surrounded by mathematics and computer science, a career marked by extraordinary achievement, and a series of seemingly impossible escapes from disaster. Yet the closer Amanda gets to her, the more complicated the picture becomes. Beneath Tamsin’s brilliance and apparent good fortune is a young woman haunted by her own dissatisfaction, convinced that her life has somehow fallen short of what it could have been. While Amanda sees someone blessed by fate, Tamsin increasingly sees herself as another person whose life has drifted away from the future she once imagined.
-                  <br /><br />
-                  Their paths become increasingly intertwined through a pair of company retreats in the Catskill Mountains, whose mystical, almost surreal beauty begins to leave a lasting impression on both women. Amid ancient forests, mysterious encounters, near-fatal accidents, and profound changes in self-perception, the story gradually expands beyond its corporate origins into something more intimate and existential. As Amanda becomes consumed by the possibility that there is a hidden pattern behind the events unfolding around Tamsin, her search for answers pulls her deeper into obsession. What begins as a story about talent and envy evolves into an exploration of luck, unrealized potential, meaning, and the stories people tell themselves to make sense of a world that often seems arbitrary. As their paths converge at Kaaterskill Falls, both women are forced to confront the distance between the lives they imagined and the lives they actually have.
-                </p>
-                <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-lovelacers">Read more</button>
-              </div>
-
-              <div class="card__links" aria-label="Screenplay links">
-                <a class="btn btn--small" href="./Lovelacers-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read screenplay preview PDF (opens in a new tab)">Read Preview</a>
-                <a class="btn btn--small btn--ghost" href="https://blcklst.com/profile/tdevito" target="_blank" rel="noreferrer" aria-label="View hosted screenplay profile on The Black List (opens in a new tab)">Profile</a>
-                <a class="btn btn--small btn--ghost" href="mailto:tdevito@icloud.com?subject=Request%20Full%20Script&body=Hi%20Thomas%2C%0A%0AI%27d%20like%20to%20request%20the%20full%20script.%0A%0AName%3A%0AProject%20or%20Company%3A%0AHow%20you%20found%20the%20script%3A%0A" aria-label="Request the full script by email">Request Full Script</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card script-card script-card--arcadian">
-            <figure class="script-poster">
-              <img src="./UnderTheArcadianSky_poster.png" alt="Poster for Under the Arcadian Sky showing a star-filled mountain valley." width="1024" height="1536" loading="lazy" decoding="async" />
-            </figure>
-
-            <div class="script-card__body">
-              <header class="script-heading">
-                <h3 class="script-title">Under the Arcadian Sky</h3>
-              </header>
-
-              <div class="script-logline">
-                <p class="label">Logline</p>
-                <p class="value">Haunted by a tragic past and a prophetic dream, a disillusioned tech worker accidentally collapses the global economy with a device that cures smartphone addiction, forcing her to pivot from corporate pariah to utopian architect in a battle for the future of human connection.</p>
-              </div>
-
-              <div class="script-synopsis">
-                <p class="label label--spaced">Synopsis</p>
-                <p class="synopsis" id="synopsis-flowband" data-expanded="false">
-                  Sarah Fiore is an undervalued programmer drifting through a life of unfulfilled potential, secretly carrying the guilt of her best friend Julia's overdose decades ago. Her stagnant reality is shattered when a concussion triggers a vivid, otherworldly dream, fulfilling a prophecy Julia made the night before she died. Waking with a newfound clarity and a technical blueprint, Sarah recruits her estranged friends, Terri and Nicole, to build the "FlowBand," a wearable device designed to sever the modern compulsion for digital connectivity. Fueled by intuition rather than business strategy, Sarah's mesmerizing, intense salesmanship turns the device into a global phenomenon, liberating millions from their screens.
-                  <br /><br />
-                  However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, crashing the stock market and splitting society into two hostile camps: those who have "woken up" and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal, public, and reputational attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
-                  <br /><br />
-                  The journey leads Sarah to the Canadian wilderness, where a brush with the harsh realities of off-grid survival convinces her that humanity cannot simply regress to nature; it must power its way forward. After discovering a brilliant but discredited engineer with a prototype for a safe, small-scale fission reactor, Sarah gambles her fortune on a radical pivot. She moves to establish a self-sustaining eco-society powered by this new energy, setting the stage for an ultimate confrontation between her budding egalitarian utopia and a desperate, capitalist "Old World" that wants her technology but fears her ideology.
-                </p>
-                <button class="btn btn--small btn--ghost synopsis-toggle" type="button" aria-expanded="false" aria-controls="synopsis-flowband">Read more</button>
-              </div>
-
-              <div class="card__links" aria-label="In progress links">
-                <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read Under the Arcadian Sky preview PDF (opens in a new tab)">Read Preview</a>
-              </div>
-            </div>
-          </article>
-        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" aria-label="Footer">
+  <footer id="footer" class="footer" aria-label="Footer">
     <div class="container">
       <div class="footer__inner">
+        <p class="footer__presented">Presented by Thomas DeVito</p>
+
         <div class="social" aria-label="Social links">
-          <a href="https://GitHub.com/tommyd2377" target="_blank" rel="noreferrer" aria-label="GitHub profile (opens in a new tab)">
+          <a href="https://x.com/thomasfdevito" target="_blank" rel="noopener noreferrer" aria-label="Thomas DeVito on X (opens in a new tab)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m4 3 12 18h4L8 3H4ZM20 3 4 21"/>
+            </svg>
+          </a>
+
+          <a href="https://t.me/doubting_tom" target="_blank" rel="noopener noreferrer" aria-label="Thomas DeVito on Telegram (opens in a new tab)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/>
+            </svg>
+          </a>
+
+          <a href="https://www.linkedin.com/in/tdevito" target="_blank" rel="noopener noreferrer" aria-label="Thomas DeVito on LinkedIn (opens in a new tab)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M7 10v7m5 0v-7m0 3c0-4 5-4 5 0v4"/>
+              <circle cx="7" cy="7" r="0.7" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+
+          <a href="https://github.com/tommyd2377" target="_blank" rel="noopener noreferrer" aria-label="Thomas DeVito on GitHub (opens in a new tab)">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.77.6-3.35-1.17-3.35-1.17-.45-1.14-1.1-1.45-1.1-1.45-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.82.09-.64.35-1.08.63-1.33-2.21-.25-4.54-1.11-4.54-4.93 0-1.09.39-1.99 1.03-2.69-.1-.26-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.38.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.83-2.33 4.68-4.56 4.93.36.31.68.92.68 1.86v2.76c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" fill="currentColor"/>
             </svg>
           </a>
 
-          <a href="https://LinkedIn.com/in/tdevito" target="_blank" rel="noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6.94 6.5A2.44 2.44 0 1 1 7 1.62a2.44 2.44 0 0 1-.06 4.88ZM2.5 22h4.9V8.5H2.5V22ZM9.14 8.5H14v1.85h.07c.68-1.28 2.35-2.63 4.83-2.63 5.16 0 6.1 3.4 6.1 7.82V22h-4.9v-5.77c0-1.38-.02-3.16-1.93-3.16-1.93 0-2.23 1.5-2.23 3.06V22H9.14V8.5Z" fill="currentColor"/>
-            </svg>
-          </a>
         </div>
 
-        <p class="footer__copy">© <span id="year">2026</span> Thomas DeVito</p>
+        <p class="footer__made-in">
+          Made with
+          <svg class="footer__heart" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+          </svg>
+          <span class="sr-only">love</span> in NYC
+        </p>
       </div>
     </div>
   </footer>
 
   <script>
     (function () {
-      var yearEl = document.getElementById("year");
-      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
       var root = document.documentElement;
       var toggle = document.getElementById("themeToggle");
 
@@ -1952,29 +1806,120 @@
         }
       }
 
-      // Screenplay synopsis expand/collapse.
-      var synopsisToggles = document.querySelectorAll(".synopsis-toggle");
-      if (synopsisToggles.length) {
-        synopsisToggles.forEach(function (btn) {
-          var synopsisId = btn.getAttribute("aria-controls");
-          if (!synopsisId) return;
-          var synopsisEl = document.getElementById(synopsisId);
-          if (!synopsisEl) return;
+      // One motion curve for project details and screenplay synopses.
+      var disclosureDuration = 800;
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var scrollVersion = 0;
 
-          function setSynopsisExpanded(expanded) {
-            synopsisEl.setAttribute("data-expanded", expanded ? "true" : "false");
-            btn.setAttribute("aria-expanded", expanded ? "true" : "false");
-            btn.textContent = expanded ? "Read less" : "Read more";
+      // A visitor's own scrolling or another interaction takes priority.
+      ["wheel", "touchstart", "pointerdown"].forEach(function (type) {
+        window.addEventListener(type, function () { scrollVersion++; }, { passive: true });
+      });
+      window.addEventListener("keydown", function (e) {
+        if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].indexOf(e.key) !== -1) scrollVersion++;
+      });
+
+      function installDisclosure(trigger, panel, details, closeButton) {
+        var expanded = details ? details.open : false;
+        var frame = 0;
+        var version = 0;
+        var settle;
+
+        panel.hidden = !expanded;
+        panel.inert = !expanded;
+
+        function setExpanded(next, returnToTrigger) {
+          if (frame) cancelAnimationFrame(frame);
+          var currentVersion = ++version;
+          var fromHeight = panel.hidden ? 0 : panel.getBoundingClientRect().height;
+          var fromOpacity = panel.hidden ? 0.65 : Number(getComputedStyle(panel).opacity);
+          expanded = next;
+          panel.hidden = false;
+          if (!next && (returnToTrigger || panel.contains(document.activeElement))) trigger.focus({ preventScroll: true });
+          panel.inert = !next;
+          if (details) details.open = true;
+
+          if (!details) {
+            trigger.setAttribute("aria-expanded", String(next));
+            trigger.textContent = next ? "Close synopsis" : "Read synopsis";
+            if (closeButton) closeButton.setAttribute("aria-expanded", String(next));
           }
 
-          setSynopsisExpanded(false);
+          panel.style.height = "auto";
+          var toHeight = next ? panel.getBoundingClientRect().height : 0;
+          panel.style.height = fromHeight + "px";
+          panel.style.opacity = fromOpacity;
 
-          btn.addEventListener("click", function () {
-            var isExpanded = synopsisEl.getAttribute("data-expanded") === "true";
-            setSynopsisExpanded(!isExpanded);
-          });
+          var startScroll = window.scrollY;
+          var header = document.querySelector(".site-header");
+          var safeTop = (header ? header.getBoundingClientRect().bottom : 0) + 24;
+          var triggerRect = trigger.getBoundingClientRect();
+          var targetScroll = startScroll;
+
+          if (returnToTrigger || triggerRect.top < safeTop || triggerRect.bottom > window.innerHeight - 24) {
+            targetScroll += triggerRect.top - safeTop;
+          } else if (next) {
+            var reveal = Math.min(toHeight, window.innerHeight * 0.4);
+            var needed = panel.getBoundingClientRect().top + reveal - (window.innerHeight - 24);
+            targetScroll += Math.min(Math.max(0, needed), Math.max(0, triggerRect.top - safeTop));
+          }
+          targetScroll = Math.max(0, targetScroll);
+          var ownScrollVersion = ++scrollVersion;
+
+          settle = function () {
+            if (currentVersion !== version) return;
+            if (frame) cancelAnimationFrame(frame);
+            frame = 0;
+            panel.hidden = !next;
+            panel.style.height = "";
+            panel.style.opacity = "";
+            if (details) details.open = next;
+          };
+
+          if (reducedMotion.matches) {
+            settle();
+            if (targetScroll !== startScroll) window.scrollTo({ top: targetScroll, behavior: "instant" });
+            return;
+          }
+
+          var started = performance.now();
+          function tick(now) {
+            if (currentVersion !== version) return;
+            var progress = Math.min(1, (now - started) / disclosureDuration);
+            var eased = 0.5 - Math.cos(Math.PI * progress) / 2;
+            panel.style.height = (fromHeight + (toHeight - fromHeight) * eased) + "px";
+            panel.style.opacity = fromOpacity + ((next ? 1 : 0.65) - fromOpacity) * eased;
+            if (ownScrollVersion === scrollVersion) {
+              window.scrollTo({ top: startScroll + (targetScroll - startScroll) * eased, behavior: "instant" });
+            }
+            if (progress < 1) frame = requestAnimationFrame(tick);
+            else settle();
+          }
+          frame = requestAnimationFrame(tick);
+        }
+
+        trigger.addEventListener("click", function (e) {
+          e.preventDefault();
+          setExpanded(!expanded, false);
         });
+        if (closeButton) closeButton.addEventListener("click", function () { setExpanded(false, true); });
+        window.addEventListener("resize", function () { if (frame && settle) settle(); });
       }
+
+      document.querySelectorAll(".card__details").forEach(function (details) {
+        var summary = details.querySelector("summary");
+        if (!summary) return;
+        var panel = document.createElement("div");
+        panel.className = "disclosure-panel";
+        while (summary.nextSibling) panel.appendChild(summary.nextSibling);
+        details.appendChild(panel);
+        installDisclosure(summary, panel, details, null);
+      });
+
+      document.querySelectorAll(".synopsis-toggle").forEach(function (trigger) {
+        var panel = document.getElementById(trigger.getAttribute("aria-controls"));
+        if (panel) installDisclosure(trigger, panel, null, panel.querySelector(".synopsis-close"));
+      });
     })();
   </script>
 </body>
