@@ -649,7 +649,7 @@
     }
 
     .projects {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     }
 
     .card {
@@ -664,6 +664,10 @@
       min-height: 220px;
     }
 
+    .projects > .card {
+      grid-template-rows: auto auto auto auto 1fr;
+    }
+
     .card__title {
       color: var(--text);
       margin: 0;
@@ -672,6 +676,31 @@
     .card__desc {
       color: var(--muted);
       margin: 0;
+    }
+
+    .card__details {
+      border-top: 1px solid var(--border);
+      padding-top: 0.8rem;
+      align-self: start;
+    }
+
+    .card__details summary {
+      width: fit-content;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .card__details summary::marker {
+      color: var(--accent);
+    }
+
+    .card__details p {
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
     }
 
     .card__desc a,
@@ -1288,13 +1317,13 @@
       <div class="container">
         <div class="ai-banner__inner">
           <p class="ai-banner__title">
-            Victoria is a live AI voice system that can answer questions about my background, skills, and projects, then turn useful follow-ups into tasks in my private <a href="#flowpath-project" aria-label="Jump to the FlowPath project card">FlowPath</a> workspace.
+            Meet Victoria, my conversational AI voice interface. Ask about my background, skills, and projects through natural, real-time dialogue.
           </p>
           <a class="ai-banner__number" href="tel:+19297349187" aria-label="Call Victoria at 929-734-9187">
             (929) 734-9187
           </a>
           <p class="ai-banner__stack">
-            I built her with the OpenAI Realtime API, Twilio Media Streams, WebSockets, Node.js, and Express.
+            Built with Twilio and OpenAI for live, two-way voice conversations.
           </p>
         </div>
       </div>
@@ -1310,22 +1339,24 @@
         <header class="section__head">
           <p class="section__label">Software</p>
           <h2 id="software-title">Selected Projects</h2>
-          <p class="lead">Projects spanning AI voice systems, mobile and web products, payments, Firebase, Solana prototypes, and focused consumer tools.</p>
+          <p class="lead">Explore the products, then open “How it’s built” to see how the technology makes each experience work.</p>
         </header>
 
         <div class="grid projects" role="list" aria-label="Software projects">
           <article class="card" role="listitem">
-            <h3 class="card__title">Voice AI System (Victoria)</h3>
-            <p class="card__desc">Real-time AI phone assistant for live calls, voice automation, structured follow-ups, and <a href="#flowpath-project" aria-label="Jump to the FlowPath project card">FlowPath</a> task routing.</p>
+            <h3 class="card__title">Victoria</h3>
+            <p class="card__desc">An AI you can actually call. Ask about my work, follow your curiosity, and hear responses flow back in a natural, real-time conversation.</p>
             <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Node.js</li>
-              <li class="tag">Express</li>
+              <li class="tag">OpenAI Voice</li>
               <li class="tag">Twilio</li>
-              <li class="tag">OpenAI Realtime</li>
+              <li class="tag">Node.js</li>
               <li class="tag">WebSockets</li>
-              <li class="tag">AI Voice Agents</li>
               <li class="tag">Private repo · live product available</li>
             </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Node.js and Express bridge Twilio phone audio to OpenAI over WebSockets. Bidirectional audio streaming, speech detection, and interruption handling make an ordinary phone call the interface.</p>
+            </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="tel:+19297349187" aria-label="Call Victoria at 929 734 9187">Call Victoria</a>
             </div>
@@ -1333,173 +1364,219 @@
 
           <article class="card" id="flowpath-project" role="listitem">
             <h3 class="card__title">FlowPath</h3>
-            <p class="card__desc">AI prioritization and productivity dashboard with contextual memory, guided intake, next-move plans, and task generation.</p>
+            <p class="card__desc">Speak a question and watch the answer take shape. FlowPath pairs voice-led search with interactive visuals, source-linked research, and paths for deeper exploration.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
-              <li class="tag">TypeScript</li>
               <li class="tag">OpenAI</li>
-              <li class="tag">SQLite/libSQL</li>
-              <li class="tag">Clerk</li>
+              <li class="tag">WebRTC</li>
+              <li class="tag">OpenUI</li>
+              <li class="tag">Motion</li>
               <li class="tag">Private repo · live product available</li>
             </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Next.js and React pair GPT-Live conversation with a research backend; WebRTC carries browser audio. OpenUI renders structured results as cards and comparisons, Motion animates transitions, and Zod validates the visual data.</p>
+            </details>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://flowpathapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath (opens in a new tab)">View App</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">FairDeal.ai</h3>
-            <p class="card__desc">AI-assisted deal room for buyer-seller price discovery, neutral fair-range analysis, structured inputs, and non-binding negotiation guidance.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Next.js</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">OpenAI</li>
-              <li class="tag">Prisma Postgres</li>
-              <li class="tag">Vercel</li>
-              <li class="tag">AI Negotiation</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://fairdeal-ai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live app for FairDeal.ai (opens in a new tab)">View App</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/fairdeal-ai" target="_blank" rel="noreferrer" aria-label="GitHub repository for FairDeal.ai (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://flowpathapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath (opens in a new tab)">Explore FlowPath</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
             <h3 class="card__title">FlowTime</h3>
-            <p class="card__desc">Behavioral accountability app for screen-time commitments, proof uploads, Firebase-backed verification flows, and Stripe pledge payments.</p>
+            <p class="card__desc">Turn less phone time into a challenge you can actually track. Shared vows, screenshot proof, and live group rankings make personal intentions visible and measurable.</p>
             <ul class="tags" aria-label="Tech tags">
-              <li class="tag">React Native</li>
-              <li class="tag">TypeScript</li>
+              <li class="tag">Expo</li>
+              <li class="tag">React Native Web</li>
               <li class="tag">Firebase</li>
+              <li class="tag">Vision OCR</li>
               <li class="tag">Stripe</li>
-              <li class="tag">Google Vision</li>
             </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Expo and React Native Web deliver an installable PWA. Firebase synchronizes vows and rankings, Google Cloud Vision extracts screenshot evidence, and optional Stripe pledges connect the outcome to a charitable donation.</p>
+            </details>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://flowtimeapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowTime (opens in a new tab)">View App</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/FlowTime" target="_blank" rel="noreferrer" aria-label="Earlier FlowTime codebase on GitHub (opens in a new tab)">Earlier Codebase</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">Blndr (Composite Vault)</h3>
-            <p class="card__desc">Solana composite-token protocol for minting and redeeming basket-backed SPL assets with Anchor smart contracts and a Next.js dApp.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Solana</li>
-              <li class="tag">Anchor</li>
-              <li class="tag">Rust</li>
-              <li class="tag">Next.js</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">View dApp</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/composite_vault" target="_blank" rel="noreferrer" aria-label="GitHub repository for Blndr (Composite Vault) (opens in a new tab)">GitHub</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">GoTube</h3>
-            <p class="card__desc">Recommendation-free YouTube client for intentional viewing, saved channels, Watch Later, watched state, Shorts filtering, and a TV-friendly route.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">React</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">Vite</li>
-              <li class="tag">Cloudflare Workers</li>
-              <li class="tag">Supabase</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://gotube-ahi.pages.dev/" target="_blank" rel="noreferrer" aria-label="Live app for GoTube (opens in a new tab)">View App</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/gotube-v2" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoTube (opens in a new tab)">GitHub</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">GoPod</h3>
-            <p class="card__desc">Recommendation-free RSS podcast player for chosen feeds, reverse-chronological episodes, persistent playback, local progress, and backup import/export.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Next.js</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">RSS</li>
-              <li class="tag">Local Storage</li>
-              <li class="tag">Vercel</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://podcast-app-livid.vercel.app/" target="_blank" rel="noreferrer" aria-label="Live app for GoPod (opens in a new tab)">View App</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/gopod" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPod (opens in a new tab)">GitHub</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">GoPulse Core Protocol</h3>
-            <p class="card__desc">Solana content-validation and rewards protocol using Anchor, TypeScript tooling, and a PvP AMM model for incentive-aligned participation.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Solana</li>
-              <li class="tag">Anchor</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">Vue</li>
-              <li class="tag">Rust</li>
-            </ul>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://www.gpdapp.xyz" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse Core Protocol (opens in a new tab)">View dApp</a>
-              <a class="btn btn--small" href="https://github.com/gopulse-labs/gopulse-core" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse Core Protocol (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://flowtimeapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowTime (opens in a new tab)">Try FlowTime</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/FlowTime" target="_blank" rel="noreferrer" aria-label="Earlier FlowTime codebase on GitHub (opens in a new tab)">Earlier source</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
             <h3 class="card__title">HeadlineHarmonies</h3>
-            <p class="card__desc">AI image-generation app that turns live headlines into styled visuals with prompt workflows and social sharing paths.</p>
+            <p class="card__desc">Turn today’s headlines into AI artwork. Pick a story and a visual style, then create an image and caption to download or share.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">Hugging Face</li>
-              <li class="tag">OpenAI</li>
-              <li class="tag">React</li>
+              <li class="tag">OpenAI Images</li>
+              <li class="tag">Vision captions</li>
+              <li class="tag">News RSS</li>
+              <li class="tag">Web Share</li>
             </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Next.js connects Google News RSS to OpenAI image generation. A vision-aware caption pipeline adds shareable text, while native browser sharing and download fallbacks carry the result into other apps.</p>
+            </details>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://www.headlineharmonies.xyz/" target="_blank" rel="noreferrer" aria-label="Live demo for HeadlineHarmonies (opens in a new tab)">View App</a>
-              <a class="btn btn--small" href="https://github.com/gopulse-labs/hhmint" target="_blank" rel="noreferrer" aria-label="GitHub repository for HeadlineHarmonies (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://www.headlineharmonies.xyz/" target="_blank" rel="noreferrer" aria-label="Live demo for HeadlineHarmonies (opens in a new tab)">Create from headlines</a>
+              <a class="btn btn--small" href="https://github.com/gopulse-labs/hhmint" target="_blank" rel="noreferrer" aria-label="GitHub repository for HeadlineHarmonies (opens in a new tab)">View source</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
             <h3 class="card__title">FilmPulse</h3>
-            <p class="card__desc">AI film discovery app with conversational recommendations, streaming responses, and metadata-rich picks for faster movie decisions.</p>
+            <p class="card__desc">Describe a mood, name a favorite film, or ask for an overlooked gem. FilmPulse turns the conversation into movie picks with useful details and viewing options.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">OpenAI</li>
-              <li class="tag">SSE</li>
+              <li class="tag">OpenAI Responses</li>
+              <li class="tag">TMDB</li>
+              <li class="tag">SSE streaming</li>
+              <li class="tag">Taste matching</li>
             </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Next.js pairs OpenAI Responses with TMDB search, taste analysis, and candidate reranking. SSE streams the conversation as rich movie cards arrive, with filters for theaters, streaming services, and rentals.</p>
+            </details>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://filmpulseai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for FilmPulse (opens in a new tab)">View App</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/FilmPulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for FilmPulse (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://filmpulseai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for FilmPulse (opens in a new tab)">Find a film</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/FilmPulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for FilmPulse (opens in a new tab)">View source</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
             <h3 class="card__title">GoPulse</h3>
-            <p class="card__desc">Social news app for web and mobile with read-before-share flows, invite-style subscriptions, Firebase data, and Stripe payments.</p>
+            <p class="card__desc">A more thoughtful news feed. Discover stories, follow curious people, and exchange perspectives through article discussions, community flags, and a deliberate read-before-share design.</p>
             <ul class="tags" aria-label="Tech tags">
-              <li class="tag">TypeScript</li>
-              <li class="tag">Firebase</li>
+              <li class="tag">Angular</li>
               <li class="tag">Ionic</li>
-              <li class="tag">Stripe</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">Firestore</li>
+              <li class="tag">Capacitor</li>
             </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Angular and Ionic power the interface, with Firebase authentication and Firestore subscriptions keeping feeds and discussions current. Capacitor and Cordova extend the same codebase toward mobile packaging.</p>
+            </details>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://gopulse-71176.web.app" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse (opens in a new tab)">View App</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/gopulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small btn--ghost" href="https://gopulse-71176.web.app" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse (opens in a new tab)">Explore GoPulse</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/gopulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">FairDeal.ai</h3>
+            <p class="card__desc">Bring two sides into one shared deal room. FairDeal turns buyer and seller inputs into explainable price ranges, negotiation drafts, and a clear, non-binding recap.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">OpenAI Responses</li>
+              <li class="tag">Prisma</li>
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">Zod</li>
+            </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Next.js handles shared deal rooms, Prisma stores them in PostgreSQL, and server-side OpenAI Responses produce structured analysis. Zod validates the output into price ranges, uncertainty notes, and negotiation drafts.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://fairdeal-ai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live app for FairDeal.ai (opens in a new tab)">Explore the deal room</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/fairdeal-ai" target="_blank" rel="noreferrer" aria-label="GitHub repository for FairDeal.ai (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">Blndr (Composite Vault)</h3>
+            <p class="card__desc">A Solana devnet experiment in programmable baskets: combine tokens into a single composite, then explore how minting and redemption connect it to the underlying assets.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Solana Devnet</li>
+              <li class="tag">Rust</li>
+              <li class="tag">Anchor</li>
+              <li class="tag">SPL Tokens</li>
+              <li class="tag">Next.js</li>
+            </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Rust and Anchor implement basket ratios, token minting, and redemption on-chain. The Next.js wallet interface assembles deposits, while program-derived vaults hold the SPL tokens that back each composite.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">Explore Blndr</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/composite_vault" target="_blank" rel="noreferrer" aria-label="GitHub repository for Blndr (Composite Vault) (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">GoTube</h3>
+            <p class="card__desc">Your channels, your queue, your attention. A personal YouTube client with chronological uploads, Watch Later, saved progress, and a remote-friendly Fire TV experience.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">React</li>
+              <li class="tag">Cloudflare Workers</li>
+              <li class="tag">Supabase</li>
+              <li class="tag">IndexedDB</li>
+              <li class="tag">Fire TV</li>
+            </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>React and TypeScript power the player; Cloudflare Workers connect YouTube data to Supabase, while IndexedDB caches the library. An Android WebView wrapper adapts the same interface for Fire TV remotes.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://gotube-ahi.pages.dev/" target="_blank" rel="noreferrer" aria-label="Live app for GoTube (opens in a new tab)">View GoTube</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/gotube-v2" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoTube (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">GoPod</h3>
+            <p class="card__desc">Choose your shows, follow the newest episodes, and return to the exact place you paused. A focused RSS player built around your own library.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">RSS</li>
+              <li class="tag">Media Session API</li>
+              <li class="tag">Local Storage</li>
+            </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Next.js parses RSS feeds on the server; React and the Media Session API power persistent audio and system playback controls. Browser storage saves progress, with JSON backups to move your library.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://podcast-app-livid.vercel.app/" target="_blank" rel="noreferrer" aria-label="Live app for GoPod (opens in a new tab)">Open GoPod</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/gopod" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPod (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">GoPulse Core Protocol</h3>
+            <p class="card__desc">An experimental market for content credibility: creators publish a post, participants take opposing validation positions, and on-chain pools determine how rewards are distributed.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Solana Devnet</li>
+              <li class="tag">Rust</li>
+              <li class="tag">Anchor</li>
+              <li class="tag">Vue 3</li>
+              <li class="tag">Arweave</li>
+            </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Rust and Anchor encode posting, long/short pools, threshold-based resolution, and reward claims. A Vue 3 wallet interface browses markets and uses Bundlr and Arweave for media uploads.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://gpapp.vercel.app/#/" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse Core Protocol (opens in a new tab)">Explore the dApp</a>
+              <a class="btn btn--small" href="https://github.com/gopulse-labs/gopulse-core" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse Core Protocol (opens in a new tab)">View protocol</a>
             </div>
           </article>
 
           <article class="card" role="listitem">
             <h3 class="card__title">Hyper_Rank</h3>
-            <p class="card__desc">Python recommendation engine using collaborative filtering, user-to-user similarity, and tiered popularity weighting.</p>
+            <p class="card__desc">Look inside the logic of a personalized feed. Hyper_Rank turns shared interests into ranked discoveries and exposes the users and scores behind each recommendation.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Python</li>
               <li class="tag">Collaborative Filtering</li>
-              <li class="tag">Recommendation Engine</li>
-              <li class="tag">Algorithms</li>
+              <li class="tag">Similarity Scoring</li>
+              <li class="tag">Explainable Ranking</li>
             </ul>
+            <details class="card__details">
+              <summary>How it’s built</summary>
+              <p>Built from Python’s standard library, Hyper_Rank combines collaborative filtering, popularity tiers, weighted user similarity, and logarithmic scoring. Each recommendation exposes its contributing users and scores, making the algorithm easy to explore.</p>
+            </details>
             <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small" href="https://github.com/tommyd2377/Hyper_Rank" target="_blank" rel="noreferrer" aria-label="GitHub repository for Hyper_Rank (opens in a new tab)">GitHub</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/Hyper_Rank" target="_blank" rel="noreferrer" aria-label="GitHub repository for Hyper_Rank (opens in a new tab)">Explore the algorithm</a>
             </div>
           </article>
         </div>
@@ -1625,7 +1702,7 @@
                 (929) 734-9187
               </a>
               <p class="contact-voice__desc">
-                Victoria can answer questions about my software background and route follow-ups into my private <a href="#flowpath-project" aria-label="Jump to the FlowPath project card">FlowPath</a> workspace.
+                Get to know my work through a natural, real-time conversation with Victoria.
               </p>
             </section>
             <a href="mailto:tdevito@icloud.com" aria-label="Email Thomas DeVito">
@@ -1683,7 +1760,7 @@
               <div class="script-synopsis">
                 <p class="label label--spaced">Synopsis</p>
                 <p class="synopsis" id="synopsis-lovelacers" data-expanded="false">
-                  Amanda Featherstone is a highly successful tech executive who has built her life around discipline, sacrifice, and hard work. Confident in her place within Manhattan’s elite tech world, she believes success can ultimately be explained by effort, competence, and good decisions. That certainty is shaken by the arrival of Tamsin DeBari, a twenty-six-year-old software engineer whose extraordinary talent appears almost effortless. Amanda finds herself instantly drawn to, and fascinated by, Tamsin. Though Tamsin never finished high school, she possesses a remarkable ability to reduce complex technical problems into elegant, deceptively simple solutions. What begins as professional curiosity soon becomes something far more personal as Amanda struggles to understand how one person can seem so naturally gifted, so casually successful, and so consistently fortunate.
+                  Amanda Featherstone is a highly successful tech executive who has built her life around discipline, sacrifice, and hard work. Confident in her place within Manhattan’s elite tech world, she believes success can ultimately be explained by effort, competence, and good decisions. That certainty is shaken by the arrival of Tamsin DeBari, a twenty-six-year-old software engineer whose extraordinary talent appears almost effortless. Amanda finds herself instantly drawn to and fascinated by Tamsin. Though Tamsin never finished high school, she possesses a remarkable ability to reduce complex technical problems into elegant, deceptively simple solutions. What begins as professional curiosity soon becomes something far more personal as Amanda struggles to understand how one person can seem so naturally gifted, so casually successful, and so consistently fortunate.
                   <br /><br />
                   As the summer unfolds, Amanda becomes increasingly preoccupied with Tamsin’s life. Each new discovery only deepens her fixation: a childhood spent surrounded by mathematics and computer science, a career marked by extraordinary achievement, and a series of seemingly impossible escapes from disaster. Yet the closer Amanda gets to her, the more complicated the picture becomes. Beneath Tamsin’s brilliance and apparent good fortune is a young woman haunted by her own dissatisfaction, convinced that her life has somehow fallen short of what it could have been. While Amanda sees someone blessed by fate, Tamsin increasingly sees herself as another person whose life has drifted away from the future she once imagined.
                   <br /><br />
