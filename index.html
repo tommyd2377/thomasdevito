@@ -634,7 +634,18 @@
     }
 
     @media (min-width: 940px) {
+      .lead,
+      .ai-banner__title { max-width: none; }
       .hero__grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero__contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.75rem 2rem;
+        margin-top: 1.2rem;
+      }
+      .hero__contact-row > .hero__meta,
+      .hero__contact-row > .hero__writing { margin-top: 0; }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -1193,13 +1204,15 @@
               <a class="btn btn--ghost" href="#software">View selected projects</a>
             </div>
 
-            <div class="hero__meta" aria-label="Quick contact links">
-              <a href="mailto:tdevito@icloud.com">tdevito@icloud.com</a>
-              <a href="tel:+13476768434">(347) 676-8434</a>
-              <a href="https://LinkedIn.com/in/tdevito" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="https://GitHub.com/tommyd2377" target="_blank" rel="noreferrer">GitHub</a>
+            <div class="hero__contact-row">
+              <div class="hero__meta" aria-label="Quick contact links">
+                <a href="mailto:tdevito@icloud.com">tdevito@icloud.com</a>
+                <a href="tel:+13476768434">(347) 676-8434</a>
+                <a href="https://LinkedIn.com/in/tdevito" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://GitHub.com/tommyd2377" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+              <p class="hero__writing"><a href="#screenwriting">I also write screenplays. Explore the stories &rarr;</a></p>
             </div>
-            <p class="hero__writing"><a href="#screenwriting">I also write screenplays. Explore the stories &rarr;</a></p>
           </div>
 
         </div>
@@ -1274,6 +1287,25 @@
             </div>
           </article>
 
+          <article class="card" id="flowpath-studio-project" role="listitem">
+            <h3 class="card__title">FlowPath Studio</h3>
+            <p class="card__desc">Make an AI voice your own. Choose its voice, give it direction, and shape its look—then watch a flowing waveform respond to both sides of the conversation.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">OpenAI GPT-Live</li>
+              <li class="tag">WebRTC</li>
+              <li class="tag">Canvas + Web Audio</li>
+              <li class="tag">Firebase</li>
+            </ul>
+            <details class="card__details">
+              <summary>How I Built It</summary>
+              <p>I built FlowPath Studio with Next.js and React, connecting GPT-Live through WebRTC and driving a custom Canvas waveform with microphone and playback audio. Firebase Authentication and Firestore keep each owner’s instructions and appearance private, while a server-side WebSocket supervises session limits and cleanup.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://flowpath.studio/" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath Studio (opens in a new tab)">Explore FlowPath Studio</a>
+            </div>
+          </article>
+
           <article class="card" role="listitem">
             <h3 class="card__title">FlowTime</h3>
             <p class="card__desc">Turn less phone time into a challenge you can actually track. Shared vows, screenshot proof, and live group rankings make personal intentions visible and measurable.</p>
@@ -1331,26 +1363,6 @@
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small btn--ghost" href="https://filmpulseai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for FilmPulse (opens in a new tab)">Find a film</a>
               <a class="btn btn--small" href="https://github.com/tommyd2377/FilmPulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for FilmPulse (opens in a new tab)">View source</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">GoPulse</h3>
-            <p class="card__desc">A more thoughtful news feed. Discover stories, follow curious people, and exchange perspectives through article discussions, community flags, and a deliberate read-before-share design.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Angular</li>
-              <li class="tag">Ionic</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">Firestore</li>
-              <li class="tag">Capacitor</li>
-            </ul>
-            <details class="card__details">
-              <summary>How I Built It</summary>
-              <p>I built GoPulse with Angular and Ionic, using Firebase authentication and Firestore subscriptions to keep feeds and discussions current. I used Capacitor and Cordova to extend the same codebase toward mobile packaging.</p>
-            </details>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://gopulse-71176.web.app" target="_blank" rel="noreferrer" aria-label="Live demo for GoPulse (opens in a new tab)">Explore GoPulse</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/gopulse" target="_blank" rel="noreferrer" aria-label="GitHub repository for GoPulse (opens in a new tab)">View source</a>
             </div>
           </article>
 
@@ -1548,17 +1560,12 @@
 
             <div class="script-card__body">
               <header class="script-heading">
-                <p class="label">01 / Talent, obsession &amp; the lives we imagine</p>
+                <p class="label">Talent, obsession &amp; the lives we imagine</p>
                 <h3 class="script-title">Lovelacers</h3>
               </header>
 
               <div class="script-logline">
-                <p class="label">Logline</p>
                 <p class="value">A successful tech executive becomes obsessed with a young software prodigy whose effortless brilliance and uncanny good fortune challenge everything she believes about talent, success, and the life she should have had.</p>
-              </div>
-
-              <div class="card__links" aria-label="Screenplay links">
-                <a class="btn btn--small" href="./Lovelacers-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read the opening pages of Lovelacers (PDF, opens in a new tab)">Read the Opening Pages &rarr;</a>
               </div>
 
               <div class="script-synopsis">
@@ -1574,6 +1581,10 @@
                   <button class="btn btn--small btn--ghost synopsis-close" type="button" aria-expanded="false" aria-controls="synopsis-lovelacers">Close synopsis</button>
                 </div>
               </div>
+
+              <div class="card__links" aria-label="Screenplay links">
+                <a class="btn btn--small" href="./Lovelacers-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read the opening pages of Lovelacers (PDF, opens in a new tab)">Read the Opening Pages &rarr;</a>
+              </div>
             </div>
           </article>
 
@@ -1584,17 +1595,12 @@
 
             <div class="script-card__body">
               <header class="script-heading">
-                <p class="label">02 / Technology, freedom &amp; human connection</p>
+                <p class="label">Technology, freedom &amp; human connection</p>
                 <h3 class="script-title">Under the Arcadian Sky</h3>
               </header>
 
               <div class="script-logline">
-                <p class="label">Logline</p>
                 <p class="value">A disillusioned programmer builds a device that frees people from their phones—and destabilizes the world built on their attention. What begins as a personal awakening becomes a fight for the future of human connection.</p>
-              </div>
-
-              <div class="card__links" aria-label="In progress links">
-                <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read the opening pages of Under the Arcadian Sky (PDF, opens in a new tab)">Read the Opening Pages &rarr;</a>
               </div>
 
               <div class="script-synopsis">
@@ -1603,12 +1609,16 @@
                   <p class="synopsis">
                   Sarah Fiore is an undervalued programmer drifting through a life of unfulfilled potential, secretly carrying the guilt of her best friend Julia's overdose decades ago. Her stagnant reality is shattered when a concussion triggers a vivid, otherworldly dream, fulfilling a prophecy Julia made the night before she died. Waking with a newfound clarity and a technical blueprint, Sarah recruits her estranged friends, Terri and Nicole, to build the "FlowBand," a wearable device designed to sever the modern compulsion for digital connectivity. Fueled by intuition rather than business strategy, Sarah's mesmerizing, intense salesmanship turns the device into a global phenomenon, liberating millions from their screens.
                   <br /><br />
-                  However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, crashing the stock market and splitting society into two hostile camps: those who have "woken up" and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal, public, and reputational attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
+                  However, the FlowBand's massive success triggers unintended chaos. As people reclaim their attention, Big Tech revenues plummet, crashing the stock market and splitting society into two hostile camps: those who have taken back their attention and those financially devastated by the collapse of the attention economy. While powerful corporate enemies launch legal, public, and reputational attacks, Sarah finds herself increasingly alienated by her own high-status success. Realizing that disconnecting from the digital world was only half the battle, she rejects the trappings of wealth, symbolized by her choice of cheap water over luxury brands, and seeks a way to sustain a community that is both technologically advanced and spiritually grounded.
                   <br /><br />
                   The journey leads Sarah to the Canadian wilderness, where a brush with the harsh realities of off-grid survival convinces her that humanity cannot simply regress to nature; it must power its way forward. After discovering a brilliant but discredited engineer with a prototype for a safe, small-scale fission reactor, Sarah gambles her fortune on a radical pivot. She moves to establish a self-sustaining eco-society powered by this new energy, setting the stage for an ultimate confrontation between her budding egalitarian utopia and a desperate, capitalist "Old World" that wants her technology but fears her ideology.
                   </p>
                   <button class="btn btn--small btn--ghost synopsis-close" type="button" aria-expanded="false" aria-controls="synopsis-flowband">Close synopsis</button>
                 </div>
+              </div>
+
+              <div class="card__links" aria-label="In progress links">
+                <a class="btn btn--small" href="./FlowBand-preview.pdf" target="_blank" rel="noreferrer" aria-label="Read the opening pages of Under the Arcadian Sky (PDF, opens in a new tab)">Read the Opening Pages &rarr;</a>
               </div>
             </div>
           </article>
@@ -1625,6 +1635,7 @@
       <div class="container">
         <header class="section__head">
           <h2 id="contact-title">Contact</h2>
+          <p class="lead">I’d love to hear what you’re interested in building. Don’t be shy—get in touch, even if it’s still just an idea.</p>
         </header>
 
         <div class="contact-grid">
