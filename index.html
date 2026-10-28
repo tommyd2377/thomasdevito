@@ -635,18 +635,19 @@
     }
 
     @media (min-width: 940px) {
-      .lead,
-      .ai-banner__title { max-width: none; }
-      .hero__grid { grid-template-columns: 1fr; gap: 2rem; }
-      .hero__contact-row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        gap: 0.75rem 2rem;
-        margin-top: 1.2rem;
+      .lead { max-width: none; }
+      .hero h1 { max-width: 24ch; text-wrap: balance; }
+      .hero__term { white-space: nowrap; }
+      .hero .lead,
+      .screenwriting .section__head .lead { max-width: 76ch; }
+      .ai-banner__title {
+        max-width: 46rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.35;
+        text-wrap: balance;
       }
-      .hero__contact-row > .hero__meta,
-      .hero__contact-row > .hero__writing { margin-top: 0; }
+      .hero__grid { grid-template-columns: 1fr; gap: 2rem; }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -1194,7 +1195,7 @@
         <div class="hero__grid">
           <div>
             <p class="kicker">Thomas DeVito · Brooklyn, NYC · Freelance Full-Stack Engineer</p>
-            <h1 id="hero-title">Full-stack engineering for AI-integrated products, mobile apps, and MVP launches.</h1>
+            <h1 id="hero-title">Full-stack engineering for <span class="hero__term">AI-integrated</span> products, mobile apps, and MVP launches.</h1>
             <p class="lead">
               I'm a senior independent software engineer with 10 years of experience building custom software, including mobile and web apps, payment systems, and AI-integrated products.
               I help founders, small businesses, and individuals turn ideas into working products, from early prototypes to launch.
