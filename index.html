@@ -691,6 +691,43 @@
       margin: 0;
     }
 
+    .projects .card__title {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      overflow-wrap: anywhere;
+    }
+
+    .project-mark {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      background: var(--surface2);
+    }
+
+    .project-mark--initials {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .project-mark--blndr {
+      background: #020617;
+      border-color: rgb(20 241 149 / 0.45);
+      font-weight: 900;
+    }
+
+    .project-mark--blndr > span {
+      background: linear-gradient(to right, #9945ff, #00c2ff, #14f195);
+      background-clip: text;
+      color: transparent;
+    }
+
     .card__desc {
       color: var(--muted);
       margin: 0;
@@ -816,17 +853,63 @@
       width: 100%;
       max-width: 310px;
       justify-self: center;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--surface2);
     }
 
-    .script-poster img {
+    .script-poster img { width: 100%; }
+
+    .script-poster__button {
+      display: block;
       width: 100%;
-      aspect-ratio: 2 / 3;
-      object-fit: contain;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: zoom-in;
     }
+
+    .script-poster__button:focus-visible { outline-offset: -4px; }
+    .script-poster.is-viewing { opacity: 0; }
+    html.poster-viewer-open { overflow: hidden; scrollbar-gutter: stable; }
+
+    .poster-viewer {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      overflow: hidden;
+      overscroll-behavior: contain;
+      touch-action: pinch-zoom;
+    }
+
+    .poster-viewer[open] { display: grid; place-items: center; }
+    .poster-viewer::backdrop { background: transparent; }
+
+    .poster-viewer__veil {
+      position: absolute;
+      inset: 0;
+      background: rgb(5 9 24 / 0.58);
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .poster-viewer__image {
+      --poster-gutter: 4rem;
+      position: relative;
+      width: min(32rem, calc(100% - var(--poster-gutter)), calc((100dvh - var(--poster-gutter)) * var(--poster-ratio, 0.666667)));
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-out;
+      transform-origin: top left;
+    }
+
+    .poster-viewer__image img { width: 100%; }
 
     .label {
       font-family: var(--font-mono);
@@ -868,6 +951,8 @@
         position: static;
         width: min(82%, 310px);
       }
+
+      .poster-viewer__image { --poster-gutter: 2rem; }
     }
 
     @media (max-width: 520px) {
@@ -1197,8 +1282,8 @@
             <p class="kicker">Thomas DeVito · Brooklyn, NYC · Freelance Full-Stack Engineer</p>
             <h1 id="hero-title">Full-stack engineering for <span class="hero__term">AI-integrated</span> products, mobile apps, and MVP launches.</h1>
             <p class="lead">
-              I'm a senior independent software engineer with 10 years of experience building custom software, including mobile and web apps, payment systems, and AI-integrated products.
-              I help founders, small businesses, and individuals turn ideas into working products, from early prototypes to launch.
+              Thomas DeVito is a senior independent software engineer with 10 years of experience building custom software, including mobile and web apps, payment systems, and AI-integrated products.
+              He helps founders, small businesses, and individuals turn ideas into working products, from early prototypes to launch.
             </p>
 
             <div class="hero__actions">
@@ -1250,47 +1335,11 @@
         </header>
 
         <div class="grid projects" role="list" aria-label="Software projects">
-          <article class="card" role="listitem">
-            <h3 class="card__title">Victoria</h3>
-            <p class="card__desc">An AI you can actually call. Ask about my work, follow your curiosity, and hear responses flow back in a natural, real-time conversation.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">OpenAI Voice</li>
-              <li class="tag">Twilio</li>
-              <li class="tag">Node.js</li>
-              <li class="tag">WebSockets</li>
-              <li class="tag">Private repo · live product available</li>
-            </ul>
-            <details class="card__details">
-              <summary>How I Built It</summary>
-              <p>I built Victoria with Node.js and Express, connecting Twilio phone audio to OpenAI over WebSockets. I used bidirectional audio streaming, speech detection, and interruption handling to make an ordinary phone call the interface.</p>
-            </details>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="tel:+19297349187" aria-label="Call Victoria at 929 734 9187">Call Victoria</a>
-            </div>
-          </article>
-
-          <article class="card" id="flowpath-project" role="listitem">
-            <h3 class="card__title">FlowPath</h3>
-            <p class="card__desc">Speak a question and watch the answer take shape. FlowPath pairs voice-led search with interactive visuals, source-linked research, and paths for deeper exploration.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Next.js</li>
-              <li class="tag">OpenAI</li>
-              <li class="tag">WebRTC</li>
-              <li class="tag">OpenUI</li>
-              <li class="tag">Motion</li>
-              <li class="tag">Private repo · live product available</li>
-            </ul>
-            <details class="card__details">
-              <summary>How I Built It</summary>
-              <p>I built FlowPath with Next.js and React, using WebRTC for GPT-Live audio and a research backend for results. I render cards and comparisons with OpenUI, animate transitions with Motion, and validate visual data with Zod.</p>
-            </details>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://flowpathapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath (opens in a new tab)">Explore FlowPath</a>
-            </div>
-          </article>
-
           <article class="card" id="flowpath-studio-project" role="listitem">
-            <h3 class="card__title">FlowPath Studio</h3>
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/flowpath-studio.png" alt="" width="44" height="44" decoding="async" />
+              <span>FlowPath Studio</span>
+            </h3>
             <p class="card__desc">Make an AI voice your own. Choose its voice, give it direction, and shape its look—then watch a flowing waveform respond to both sides of the conversation.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
@@ -1308,8 +1357,33 @@
             </div>
           </article>
 
+          <article class="card" id="flowpath-project" role="listitem">
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/flowpath.svg" alt="" width="44" height="44" decoding="async" />
+              <span>FlowPath</span>
+            </h3>
+            <p class="card__desc">Speak a question and watch the answer take shape. FlowPath pairs voice-led search with interactive visuals, source-linked research, and paths for deeper exploration.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">OpenAI</li>
+              <li class="tag">WebRTC</li>
+              <li class="tag">OpenUI</li>
+              <li class="tag">Motion</li>
+            </ul>
+            <details class="card__details">
+              <summary>How I Built It</summary>
+              <p>I built FlowPath with Next.js and React, using WebRTC for GPT-Live audio and a research backend for results. I render cards and comparisons with OpenUI, animate transitions with Motion, and validate visual data with Zod.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://flowpathapp.com" target="_blank" rel="noreferrer" aria-label="Live app for FlowPath (opens in a new tab)">Explore FlowPath</a>
+            </div>
+          </article>
+
           <article class="card" role="listitem">
-            <h3 class="card__title">FlowTime</h3>
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/flowtime.png" alt="" width="44" height="44" decoding="async" />
+              <span>FlowTime</span>
+            </h3>
             <p class="card__desc">Turn less phone time into a challenge you can actually track. Shared vows, screenshot proof, and live group rankings make personal intentions visible and measurable.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Expo</li>
@@ -1329,27 +1403,10 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">HeadlineHarmonies</h3>
-            <p class="card__desc">Turn today’s headlines into AI artwork. Pick a story and a visual style, then create an image and caption to download or share.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Next.js</li>
-              <li class="tag">OpenAI Images</li>
-              <li class="tag">Vision captions</li>
-              <li class="tag">News RSS</li>
-              <li class="tag">Web Share</li>
-            </ul>
-            <details class="card__details">
-              <summary>How I Built It</summary>
-              <p>I built HeadlineHarmonies with Next.js, connecting Google News RSS to OpenAI image generation. I added a vision-aware caption pipeline, native browser sharing, and download fallbacks so the artwork can move into other apps.</p>
-            </details>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://www.headlineharmonies.xyz/" target="_blank" rel="noreferrer" aria-label="Live demo for HeadlineHarmonies (opens in a new tab)">Create from headlines</a>
-              <a class="btn btn--small" href="https://github.com/gopulse-labs/hhmint" target="_blank" rel="noreferrer" aria-label="GitHub repository for HeadlineHarmonies (opens in a new tab)">View source</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">FilmPulse</h3>
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/filmpulse.svg" alt="" width="44" height="44" decoding="async" />
+              <span>FilmPulse</span>
+            </h3>
             <p class="card__desc">Describe a mood, name a favorite film, or ask for an overlooked gem. FilmPulse turns the conversation into movie picks with useful details and viewing options.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
@@ -1369,47 +1426,10 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">FairDeal.ai</h3>
-            <p class="card__desc">Bring two sides into one shared deal room. FairDeal turns buyer and seller inputs into explainable price ranges, negotiation drafts, and a clear, non-binding recap.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Next.js</li>
-              <li class="tag">OpenAI Responses</li>
-              <li class="tag">Prisma</li>
-              <li class="tag">PostgreSQL</li>
-              <li class="tag">Zod</li>
-            </ul>
-            <details class="card__details">
-              <summary>How I Built It</summary>
-              <p>I built FairDeal with Next.js, using Prisma and PostgreSQL to store shared deal rooms. I used server-side OpenAI Responses for structured analysis and Zod to validate price ranges, uncertainty notes, and negotiation drafts.</p>
-            </details>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://fairdeal-ai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live app for FairDeal.ai (opens in a new tab)">Explore the deal room</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/fairdeal-ai" target="_blank" rel="noreferrer" aria-label="GitHub repository for FairDeal.ai (opens in a new tab)">View source</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">Blndr (Composite Vault)</h3>
-            <p class="card__desc">A Solana devnet experiment in programmable baskets: combine tokens into a single composite, then explore how minting and redemption connect it to the underlying assets.</p>
-            <ul class="tags" aria-label="Tech tags">
-              <li class="tag">Solana Devnet</li>
-              <li class="tag">Rust</li>
-              <li class="tag">Anchor</li>
-              <li class="tag">SPL Tokens</li>
-              <li class="tag">Next.js</li>
-            </ul>
-            <details class="card__details">
-              <summary>How I Built It</summary>
-              <p>I built Blndr’s on-chain basket ratios, minting, and redemption in Rust with Anchor. I used Next.js for the wallet interface and program-derived vaults to hold the SPL tokens backing each composite.</p>
-            </details>
-            <div class="card__links" aria-label="Project links">
-              <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">Explore Blndr</a>
-              <a class="btn btn--small" href="https://github.com/tommyd2377/composite_vault" target="_blank" rel="noreferrer" aria-label="GitHub repository for Blndr (Composite Vault) (opens in a new tab)">View source</a>
-            </div>
-          </article>
-
-          <article class="card" role="listitem">
-            <h3 class="card__title">GoTube</h3>
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/gotube.svg" alt="" width="44" height="44" decoding="async" />
+              <span>GoTube</span>
+            </h3>
             <p class="card__desc">Your channels, your queue, your attention. A personal YouTube client with chronological uploads, Watch Later, saved progress, and a remote-friendly Fire TV experience.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">React</li>
@@ -1429,7 +1449,10 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">GoPod</h3>
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/gopod.svg" alt="" width="44" height="44" decoding="async" />
+              <span>GoPod</span>
+            </h3>
             <p class="card__desc">Choose your shows, follow the newest episodes, and return to the exact place you paused. A focused RSS player built around your own library.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Next.js</li>
@@ -1449,7 +1472,56 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">GoPulse Core Protocol</h3>
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/headlineharmonies.png" alt="" width="44" height="44" decoding="async" />
+              <span>HeadlineHarmonies</span>
+            </h3>
+            <p class="card__desc">Turn today’s headlines into AI artwork. Pick a story and a visual style, then create an image and caption to download or share.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">OpenAI Images</li>
+              <li class="tag">Vision captions</li>
+              <li class="tag">News RSS</li>
+              <li class="tag">Web Share</li>
+            </ul>
+            <details class="card__details">
+              <summary>How I Built It</summary>
+              <p>I built HeadlineHarmonies with Next.js, connecting Google News RSS to OpenAI image generation. I added a vision-aware caption pipeline, native browser sharing, and download fallbacks so the artwork can move into other apps.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://www.headlineharmonies.xyz/" target="_blank" rel="noreferrer" aria-label="Live demo for HeadlineHarmonies (opens in a new tab)">Create from headlines</a>
+              <a class="btn btn--small" href="https://github.com/gopulse-labs/hhmint" target="_blank" rel="noreferrer" aria-label="GitHub repository for HeadlineHarmonies (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">
+              <span class="project-mark project-mark--blndr" aria-hidden="true"><span>B</span></span>
+              <span>Blndr (Composite Vault)</span>
+            </h3>
+            <p class="card__desc">A Solana devnet experiment in programmable baskets: combine tokens into a single composite, then explore how minting and redemption connect it to the underlying assets.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Solana Devnet</li>
+              <li class="tag">Rust</li>
+              <li class="tag">Anchor</li>
+              <li class="tag">SPL Tokens</li>
+              <li class="tag">Next.js</li>
+            </ul>
+            <details class="card__details">
+              <summary>How I Built It</summary>
+              <p>I built Blndr’s on-chain basket ratios, minting, and redemption in Rust with Anchor. I used Next.js for the wallet interface and program-derived vaults to hold the SPL tokens backing each composite.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://composite-vault.vercel.app" target="_blank" rel="noreferrer" aria-label="Live demo for Blndr (Composite Vault) (opens in a new tab)">Explore Blndr</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/composite_vault" target="_blank" rel="noreferrer" aria-label="GitHub repository for Blndr (Composite Vault) (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/gopulse.png" alt="" width="44" height="44" decoding="async" />
+              <span>GoPulse Core Protocol</span>
+            </h3>
             <p class="card__desc">An experimental market for content credibility: creators publish a post, participants take opposing validation positions, and on-chain pools determine how rewards are distributed.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Solana Devnet</li>
@@ -1469,7 +1541,33 @@
           </article>
 
           <article class="card" role="listitem">
-            <h3 class="card__title">Hyper_Rank</h3>
+            <h3 class="card__title">
+              <img class="project-mark" src="./assets/project-logos/fairdeal.svg" alt="" width="44" height="44" decoding="async" />
+              <span>FairDeal.ai</span>
+            </h3>
+            <p class="card__desc">Bring two sides into one shared deal room. FairDeal turns buyer and seller inputs into explainable price ranges, negotiation drafts, and a clear, non-binding recap.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">Next.js</li>
+              <li class="tag">OpenAI Responses</li>
+              <li class="tag">Prisma</li>
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">Zod</li>
+            </ul>
+            <details class="card__details">
+              <summary>How I Built It</summary>
+              <p>I built FairDeal with Next.js, using Prisma and PostgreSQL to store shared deal rooms. I used server-side OpenAI Responses for structured analysis and Zod to validate price ranges, uncertainty notes, and negotiation drafts.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="https://fairdeal-ai.vercel.app" target="_blank" rel="noreferrer" aria-label="Live app for FairDeal.ai (opens in a new tab)">Explore the deal room</a>
+              <a class="btn btn--small" href="https://github.com/tommyd2377/fairdeal-ai" target="_blank" rel="noreferrer" aria-label="GitHub repository for FairDeal.ai (opens in a new tab)">View source</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">
+              <span class="project-mark project-mark--initials" aria-hidden="true">HR</span>
+              <span>Hyper_Rank</span>
+            </h3>
             <p class="card__desc">Look inside the logic of a personalized feed. Hyper_Rank turns shared interests into ranked discoveries and exposes the users and scores behind each recommendation.</p>
             <ul class="tags" aria-label="Tech tags">
               <li class="tag">Python</li>
@@ -1483,6 +1581,28 @@
             </details>
             <div class="card__links" aria-label="Project links">
               <a class="btn btn--small" href="https://github.com/tommyd2377/Hyper_Rank" target="_blank" rel="noreferrer" aria-label="GitHub repository for Hyper_Rank (opens in a new tab)">Explore the algorithm</a>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3 class="card__title">
+              <span class="project-mark project-mark--initials" aria-hidden="true">V</span>
+              <span>Victoria</span>
+            </h3>
+            <p class="card__desc">An AI you can actually call. Ask about my work, follow your curiosity, and hear responses flow back in a natural, real-time conversation.</p>
+            <ul class="tags" aria-label="Tech tags">
+              <li class="tag">OpenAI Voice</li>
+              <li class="tag">Twilio</li>
+              <li class="tag">Node.js</li>
+              <li class="tag">WebSockets</li>
+              <li class="tag">Private repo · live product available</li>
+            </ul>
+            <details class="card__details">
+              <summary>How I Built It</summary>
+              <p>I built Victoria with Node.js and Express, connecting Twilio phone audio to OpenAI over WebSockets. I used bidirectional audio streaming, speech detection, and interruption handling to make an ordinary phone call the interface.</p>
+            </details>
+            <div class="card__links" aria-label="Project links">
+              <a class="btn btn--small btn--ghost" href="tel:+19297349187" aria-label="Call Victoria at 929 734 9187">Call Victoria</a>
             </div>
           </article>
         </div>
@@ -1549,15 +1669,16 @@
       <div class="container">
         <header class="section__head">
           <h2 id="screenwriting-title">Screenplays</h2>
-          <p class="lead">I’ve always felt a tension between the engineer and the artist in me. Software engages my love of ideas, systems, and invention, while film and music move me on a deeper emotional level. The beauty, meaning, and emotional power of a great film or piece of music can change us forever, in ways big and small.</p>
-          <p class="lead">For years, I’ve felt torn between coding and filmmaking. I still live with that tension, but there’s no rule saying a person can’t excel at both.</p>
+          <p class="lead">I’ve always felt a tension between the engineer and the artist in me. Software engages my love of ideas, systems, and invention, while film and music move me on a deeper emotional level.</p>
           <p class="lead">The software projects above reflect my creative intellect; these screenplays express my emotional and spiritual life.</p>
         </header>
 
         <div class="grid script-grid" aria-label="Screenwriting portfolio">
           <article class="card script-card script-card--lovelacers">
             <figure class="script-poster">
-              <img src="./Lovelacers_poster.png" alt="Poster for Lovelacers showing a secluded forest waterfall." width="1030" height="1527" loading="lazy" decoding="async" />
+              <button class="script-poster__button" type="button" aria-label="Enlarge Lovelacers poster" aria-haspopup="dialog" aria-controls="posterViewer">
+                <img src="./Lovelacers_poster.png" alt="Poster for Lovelacers showing a secluded forest waterfall." width="1030" height="1527" loading="lazy" decoding="async" />
+              </button>
             </figure>
 
             <div class="script-card__body">
@@ -1592,7 +1713,9 @@
 
           <article class="card script-card script-card--arcadian">
             <figure class="script-poster">
-              <img src="./UnderTheArcadianSky_poster.png" alt="Poster for Under the Arcadian Sky showing a star-filled mountain valley." width="1024" height="1536" loading="lazy" decoding="async" />
+              <button class="script-poster__button" type="button" aria-label="Enlarge Under the Arcadian Sky poster" aria-haspopup="dialog" aria-controls="posterViewer">
+                <img src="./UnderTheArcadianSky_poster.png" alt="Poster for Under the Arcadian Sky showing a star-filled mountain valley." width="1024" height="1536" loading="lazy" decoding="async" />
+              </button>
             </figure>
 
             <div class="script-card__body">
@@ -1705,6 +1828,13 @@
       </div>
     </div>
   </footer>
+
+  <dialog class="poster-viewer" id="posterViewer" aria-label="Screenplay poster">
+    <div class="poster-viewer__veil" aria-hidden="true"></div>
+    <button class="poster-viewer__image" type="button" aria-label="Close enlarged poster" autofocus>
+      <img alt="" />
+    </button>
+  </dialog>
 
   <script>
     (function () {
@@ -1932,6 +2062,93 @@
       document.querySelectorAll(".synopsis-toggle").forEach(function (trigger) {
         var panel = document.getElementById(trigger.getAttribute("aria-controls"));
         if (panel) installDisclosure(trigger, panel, null, panel.querySelector(".synopsis-close"));
+      });
+
+      var posterViewer = document.getElementById("posterViewer");
+      var enlargedPoster = posterViewer.querySelector(".poster-viewer__image");
+      var viewerImage = enlargedPoster.querySelector("img");
+      var veil = posterViewer.querySelector(".poster-viewer__veil");
+      var posterTrigger, posterFigure, posterMotion, veilMotion;
+      var closingPoster = false;
+
+      function stopPosterMotion() {
+        if (posterMotion) {
+          posterMotion.onfinish = null;
+          posterMotion.cancel();
+          veilMotion.cancel();
+          posterMotion = veilMotion = null;
+        }
+      }
+
+      function thumbnailTransform() {
+        var origin = posterFigure.getBoundingClientRect();
+        var center = enlargedPoster.getBoundingClientRect();
+        return "translate(" + (origin.left - center.left) + "px, " + (origin.top - center.top) +
+          "px) scale(" + (origin.width / center.width) + ", " + (origin.height / center.height) + ")";
+      }
+
+      function finishPosterClose() {
+        stopPosterMotion();
+        posterFigure.classList.remove("is-viewing");
+        root.classList.remove("poster-viewer-open");
+        posterViewer.close();
+        posterTrigger.focus({ preventScroll: true });
+        closingPoster = false;
+      }
+
+      function animatePoster(from, to, fromVeil, toVeil, finish) {
+        var timing = { duration: disclosureDuration, easing: "cubic-bezier(0.4, 0, 0.2, 1)", fill: "both" };
+        posterMotion = enlargedPoster.animate([{ transform: from }, { transform: to }], timing);
+        veilMotion = veil.animate([{ opacity: fromVeil }, { opacity: toVeil }], timing);
+        posterMotion.onfinish = finish;
+      }
+
+      document.querySelectorAll(".script-poster__button").forEach(function (trigger) {
+        trigger.addEventListener("click", function () {
+          if (posterViewer.open) return;
+          var image = trigger.querySelector("img");
+          posterTrigger = trigger;
+          posterFigure = trigger.closest(".script-poster");
+          var width = Number(image.getAttribute("width"));
+          var height = Number(image.getAttribute("height"));
+          viewerImage.width = width;
+          viewerImage.height = height;
+          enlargedPoster.style.setProperty("--poster-ratio", width / height);
+          viewerImage.src = image.currentSrc || image.src;
+          posterViewer.setAttribute("aria-label", image.alt);
+          scrollVersion++;
+          root.classList.add("poster-viewer-open");
+          posterViewer.showModal();
+          posterFigure.classList.add("is-viewing");
+          if (!reducedMotion.matches) animatePoster(thumbnailTransform(), "none", 0, 1, stopPosterMotion);
+        });
+      });
+
+      function closePoster() {
+        if (!posterViewer.open || closingPoster) return;
+        closingPoster = true;
+        if (reducedMotion.matches) {
+          finishPosterClose();
+          return;
+        }
+        var from = getComputedStyle(enlargedPoster).transform;
+        var fromVeil = Number(getComputedStyle(veil).opacity);
+        stopPosterMotion();
+        animatePoster(from, thumbnailTransform(), fromVeil, 0, finishPosterClose);
+      }
+
+      enlargedPoster.addEventListener("click", closePoster);
+      posterViewer.addEventListener("click", function (event) {
+        if (event.target === posterViewer) closePoster();
+      });
+      posterViewer.addEventListener("cancel", function (event) {
+        event.preventDefault();
+        closePoster();
+      });
+      window.addEventListener("resize", function () {
+        if (!posterMotion) return;
+        if (closingPoster) finishPosterClose();
+        else stopPosterMotion();
       });
     })();
   </script>
